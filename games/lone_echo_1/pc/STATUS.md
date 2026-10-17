@@ -31,3 +31,7 @@ A hash counts once for each class it ships under. Overall 5512 / 8480 named.
 Sound bank contents (Wwise names, media) are not indexed for this game and platform.
 Script functions and node classes are not indexed for this game and platform.
 Shader-set names split into owner, material, pass and features: 6914 (`shaders/shadersets.tsv`).
+
+## Types
+
+Type symbols: 14 for 8 classes; 0 with an unknown class (`types.tsv`).

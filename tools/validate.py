@@ -54,6 +54,9 @@ CONSTANT_SCRIPTS = {"constant": HASH, "script": HASH,
                     "role": r"variable|node_input_value|exec_pin|graph_state|event|function_data|rdata_table|"
                             r"type_or_funcparam|expression_input|function_param|timeline_node_value|debug_name|other",
                     "build": BUILD}
+TYPES = {"hash": HASH, "class": r"|[A-Za-z0-9_]+", "suffix": r"|(Win7|Win10|Android)(GPU|Debug)?",
+         "schema": r"win7|win10|android", "layer": r"primary|gpu|debug|unknown", "game": BUILDS["game"],
+         "platform": r"pc|quest", "first_build": BUILD, "last_build": BUILD, "assets": r"[1-9][0-9]*"}
 NODE_CLASSES = {"hash": HASH, "name": r"[A-Z0-9_]+", "n_scripts": r"[1-9][0-9]*", "build": BUILD}
 PRIVATE = [r"\b[A-Za-z]:[\\/][A-Za-z0-9_]", r"/home/", r"/mnt/", r"/tmp/", r"/Users/", r"\\\\[A-Za-z0-9.-]+\\",
            r"(?<![:/])//[A-Za-z0-9.-]+/", r"\b[0-9a-fA-F]{40,}\b",
@@ -176,6 +179,25 @@ def check_sounds_scripts(data, by_hash, builds):
     return cited
 
 
+def check_types(data, by_hash, builds):
+    """data/types.tsv: a classed row rehashes from class + suffix, and its suffix agrees with schema and layer."""
+    cited = set()
+    for r in check_table(data / "types.tsv", TYPES, "hash,game,platform"):
+        for b in (r["first_build"], r["last_build"]):
+            cited.add(b)
+            if b in builds and (builds[b]["game"], builds[b]["platform"]) != (r["game"], r["platform"]):
+                fail(f"types.tsv: {r['hash']} build {b} is not {r['game']}-{r['platform']}")
+        if not r["class"]:
+            if r["suffix"] or r["layer"] != "unknown" or r["hash"] in by_hash:
+                fail(f"types.tsv: classless {r['hash']} has a suffix, a layer or a name")
+            continue
+        layer = {"GPU": "gpu", "Debug": "debug"}.get(re.sub(r"Win7|Win10|Android", "", r["suffix"]), "primary")
+        if (canonical(csymbol64(r["class"] + r["suffix"])) != r["hash"] or r["hash"] not in by_hash
+                or not r["suffix"].lower().startswith(r["schema"]) or r["layer"] != layer):
+            fail(f"types.tsv: {r['hash']} does not match {r['class']}{r['suffix']} ({r['schema']}, {r['layer']})")
+    return cited
+
+
 def main():
     data = ROOT / "data"
     names = check_table(data / "names.tsv", NAMES)
@@ -199,7 +221,8 @@ def main():
         for c in check_table(data / "coverage" / stem, COVERAGE, "class"):
             if int(c["named"]) > int(c["file_symbols"]):
                 fail(f"coverage/{stem}: {c['class']} named > total")
-    cited |= check_sounds_scripts(data, by_hash, {r["build_id"]: r for r in read_tsv(data / "builds.tsv")})
+    build_rows = {r["build_id"]: r for r in read_tsv(data / "builds.tsv")}
+    cited |= check_sounds_scripts(data, by_hash, build_rows) | check_types(data, by_hash, build_rows)
     if cited - builds:
         fail(f"builds.tsv: {len(cited - builds)} cited builds missing")
     for v in read_tsv(ROOT / "hashes/vectors.tsv"):

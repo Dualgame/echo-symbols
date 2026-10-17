@@ -103,6 +103,18 @@ def shader_views(lane_dir, rows):
             "(`shaders/shadersets.tsv`)."]
 
 
+def type_views(lane_dir, rows):
+    """games/<game>/<platform>/types.tsv: the type symbols this game ships, by class."""
+    if not rows:
+        return []
+    body = sorted(rows, key=lambda r: (r["class"] == "", r["class"].lower(), r["suffix"], r["hash"]))
+    write_tsv(lane_dir / "types.tsv", ["class", "suffix", "layer", "hash", "first_build", "last_build", "assets"],
+              body)
+    classes = {r["class"] for r in rows if r["class"]}
+    return ["", "## Types", "", f"Type symbols: {len(rows)} for {len(classes)} classes; "
+            f"{sum(1 for r in rows if not r['class'])} with an unknown class (`types.tsv`)."]
+
+
 def status_md(lane, rows, assets, other, coverage, extra):
     game, platform = lane["game"], lane["platform"]
     named = sum(int(c["named"]) for c in coverage)
@@ -160,6 +172,7 @@ def build(out):
     builds = read_tsv(data / "builds.tsv")
     wwise = read_tsv(data / "wwise/names.tsv")
     write_json(out / "subsets/wwise_lookup.json", {r["id"]: r["name"] for r in wwise})
+    types = read_tsv(data / "types.tsv")
     summary = []
     for lane in read_tsv(data / "lanes.tsv"):
         game, platform = lane["game"], lane["platform"]
@@ -176,6 +189,7 @@ def build(out):
         lane_builds = {b["build_id"] for b in builds if (b["game"], b["platform"]) == (game, platform)}
         extra = sound_script_views(data, names, lane_dir, stem, lane_builds)
         extra += shader_views(lane_dir, assets + other)
+        extra += type_views(lane_dir, [t for t in types if (t["game"], t["platform"]) == (game, platform)])
         (lane_dir / "STATUS.md").write_text(status_md(lane, assets + other, assets, other, coverage, extra),
                                             encoding="utf-8", newline="\n")
         write_json(out / "subsets" / f"{stem}.json", {r["hash"]: r["name"] for r in assets + other})
