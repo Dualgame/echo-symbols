@@ -1,0 +1,4 @@
+media	label	via_event	event
+0x15a7dce9	loop_minimap_idle_bottom_start	0x8aeb9f57	loop_minimap_idle_bottom_start
+0x2108e0d3	loop_catapult_combat_idle_a_start	0x0f1b007f	loop_catapult_combat_idle_a_start
+0x3b58f151	loop_minimap_idle_top_start	0x1befbae9	loop_minimap_idle_top_start

@@ -38,7 +38,43 @@ def write_json(path, mapping):
         f.write("\n")
 
 
-def status_md(lane, rows, assets, other, coverage):
+def sound_script_views(data, names, lane_dir, stem, lane_builds):
+    """games/<game>/<platform>/sounds/ and scripts/; returns the STATUS.md lines for them."""
+    lines = ["", "## Sounds and scripts", ""]
+    wwise = {r["id"]: r for r in read_tsv(data / "wwise/names.tsv")}
+    usage = data / "wwise/usage" / f"{stem}.tsv"
+    if usage.is_file():
+        used = [{**u, **wwise[u["id"]]} for u in read_tsv(usage)]
+        write_tsv(lane_dir / "sounds/names.tsv", ["id", "name", "kinds", "verdict"], used)
+        media = read_tsv(data / "wwise/media" / f"{stem}.tsv")
+        banks = {}
+        for m in media:
+            banks.setdefault(names[m["bank"]]["name"], []).append({**m, "event": wwise.get(m["via_event"], {}).get("name", "")})
+        for bank, body in banks.items():
+            write_tsv(lane_dir / "sounds/media" / f"{bank}.tsv", ["media", "label", "via_event", "event"], body)
+        by_event = sum(1 for m in media if m["via_event"] in wwise)
+        lines.append(f"Sound names referenced by the banks: {len(used)}. Media: {len(media)} in {len(banks)} banks; "
+                     f"{by_event} labelled from a named event, {len(media) - by_event} from an unnamed one.")
+    else:
+        lines.append("Sound bank contents (Wwise names, media) are not indexed for this game and platform.")
+    funcs = [r for r in read_tsv(data / "scripts/functions.tsv") if r["build"] in lane_builds]
+    nodes = [r for r in read_tsv(data / "scripts/node_classes.tsv") if r["build"] in lane_builds]
+    if funcs or nodes:
+        script = lambda h: names[h]["name"] if h in names else ""  # noqa: E731
+        body = sorted(({"script_name": script(f["first_script"]), "script": f["first_script"], "hash": f["hash"],
+                        "name": script(f["hash"]), "n_scripts": f["n_scripts"]} for f in funcs),
+                      key=lambda r: (r["script_name"], r["script"], r["hash"]))
+        write_tsv(lane_dir / "scripts/functions.tsv", ["script_name", "script", "hash", "name", "n_scripts"], body)
+        write_tsv(lane_dir / "scripts/node_classes.tsv", ["hash", "name", "cased_name", "n_scripts"],
+                  [{**n, "cased_name": script(n["hash"])} for n in nodes])
+        lines.append(f"Script functions: {sum(1 for r in body if r['name'])} of {len(body)} named. "
+                     f"Script node classes: {len(nodes)}.")
+    else:
+        lines.append("Script functions and node classes are not indexed for this game and platform.")
+    return lines
+
+
+def status_md(lane, rows, assets, other, coverage, extra):
     game, platform = lane["game"], lane["platform"]
     named = sum(int(c["named"]) for c in coverage)
     total = sum(int(c["file_symbols"]) for c in coverage)
@@ -58,13 +94,11 @@ def status_md(lane, rows, assets, other, coverage):
     for c in sorted(coverage, key=lambda c: (-int(c["file_symbols"]), c["class"])):
         t, k = int(c["file_symbols"]), int(c["named"])
         lines.append(f"| `{c['class']}` | {t} | {k} | {100 * k / t:.1f} |")
-    return "\n".join(lines) + "\n"
+    return "\n".join(lines + extra) + "\n"
 
 
-def stats_md(names, lanes):
-    rows = list(names.values())
-
-    def table(col, title):
+def stats_md(names, lanes, wwise):
+    def table(col, title, rows):
         counts = {}
         for r in rows:
             counts[r[col] or "(none)"] = counts.get(r[col] or "(none)", 0) + 1
@@ -73,12 +107,17 @@ def stats_md(names, lanes):
         out += [f"| `{k}` | {n} | {100 * n / len(rows):.1f} |" for k, n in ranked]
         return out + [""]
 
+    rows = list(names.values())
     lines = ["# Statistics", "", f"Generated from `data/` by `tools/build_views.py`. **{len(rows)} names.**", "",
              "| game | platform | status | assets.tsv | other.tsv |", "|---|---|---|---:|---:|"]
     lines += [f"| {g} | {p} | {s} | {a} | {o} |" for g, p, s, a, o in lanes] + [""]
     for col, title in (("verdict", "verdict"), ("tier", "tier"), ("case", "case"), ("kind", "kind"),
                        ("spelling_basis", "spelling basis")):
-        lines += table(col, title)
+        lines += table(col, title, rows)
+    lines += ["## Wwise sound names", "", f"**{len(wwise)} names** in `data/wwise/names.tsv`.", ""]
+    for col, title in (("verdict", "verdict"), ("spelling_basis", "spelling basis"), ("case", "case"),
+                       ("source_game", "source game")):
+        lines += table(col, title, wwise)
     return "\n".join(lines)
 
 
@@ -89,6 +128,9 @@ def build(out):
         shutil.rmtree(out / sub, ignore_errors=True)
     write_json(out / "subsets/hash_lookup.json", {h: r["name"] for h, r in names.items()})
     write_json(out / "subsets/types.json", {h: r["name"] for h, r in names.items() if r["kind"] == "type"})
+    builds = read_tsv(data / "builds.tsv")
+    wwise = read_tsv(data / "wwise/names.tsv")
+    write_json(out / "subsets/wwise_lookup.json", {r["id"]: r["name"] for r in wwise})
     summary = []
     for lane in read_tsv(data / "lanes.tsv"):
         game, platform = lane["game"], lane["platform"]
@@ -102,11 +144,13 @@ def build(out):
                                             "last_build", "n_builds"], assets)
         write_tsv(lane_dir / "other.tsv", ["hash", "name", "kind", "tier", "case", "verdict"], other)
         coverage = read_tsv(data / "coverage" / f"{stem}.tsv")
-        (lane_dir / "STATUS.md").write_text(status_md(lane, assets + other, assets, other, coverage),
+        lane_builds = {b["build_id"] for b in builds if (b["game"], b["platform"]) == (game, platform)}
+        extra = sound_script_views(data, names, lane_dir, stem, lane_builds)
+        (lane_dir / "STATUS.md").write_text(status_md(lane, assets + other, assets, other, coverage, extra),
                                             encoding="utf-8", newline="\n")
         write_json(out / "subsets" / f"{stem}.json", {r["hash"]: r["name"] for r in assets + other})
         summary.append((game, platform, lane["status"], len(assets), len(other)))
-    (out / "games/STATS.md").write_text(stats_md(names, summary), encoding="utf-8", newline="\n")
+    (out / "games/STATS.md").write_text(stats_md(names, summary, wwise), encoding="utf-8", newline="\n")
 
 
 if __name__ == "__main__":

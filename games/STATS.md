@@ -46,3 +46,28 @@ Generated from `data/` by `tools/build_views.py`. **171015 names.**
 | `corroborated` | 26186 | 15.3 |
 | `legacy-corroborated` | 3748 | 2.2 |
 | `legacy-unknown` | 106 | 0.1 |
+
+## Wwise sound names
+
+**3706 names** in `data/wwise/names.tsv`.
+
+| verdict | rows | % |
+|---|---:|---:|
+| `KEEP-observed` | 3671 | 99.1 |
+| `KEEP-bounded` | 32 | 0.9 |
+| `UNCONFIRMED` | 3 | 0.1 |
+
+| spelling basis | rows | % |
+|---|---:|---:|
+| `observed` | 3671 | 99.1 |
+| `search` | 35 | 0.9 |
+
+| case | rows | % |
+|---|---:|---:|
+| `authored` | 3671 | 99.1 |
+| `folded` | 35 | 0.9 |
+
+| source game | rows | % |
+|---|---:|---:|
+| `echo_vr` | 3689 | 99.5 |
+| `lone_echo_1` | 17 | 0.5 |

@@ -259,3 +259,8 @@ A hash counts once for each class it ships under. Overall 79362 / 175870 named.
 | `CRxMaterialFXCR` | 1 | 1 | 100.0 |
 | `CSharedCanvasUICR` | 1 | 0 | 0.0 |
 | `CSubtitleCR` | 1 | 1 | 100.0 |
+
+## Sounds and scripts
+
+Sound bank contents (Wwise names, media) are not indexed for this game and platform.
+Script functions and node classes are not indexed for this game and platform.

@@ -398,3 +398,8 @@ A hash counts once for each class it ships under. Overall 73946 / 120407 named.
 | `CR15SnapshotToolCR` | 1 | 1 | 100.0 |
 | `CR15VRPlayerBoundaryCR` | 1 | 1 | 100.0 |
 | `CSettingsUIResource` | 1 | 1 | 100.0 |
+
+## Sounds and scripts
+
+Sound names referenced by the banks: 1764. Media: 2721 in 39 banks; 2651 labelled from a named event, 70 from an unnamed one.
+Script functions: 1070 of 1304 named. Script node classes: 1063.

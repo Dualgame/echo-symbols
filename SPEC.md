@@ -1,4 +1,4 @@
-# Data specification — v0.1
+# Data specification — v0.2
 
 All tables are UTF-8 TSV with a header row, LF line endings and no BOM. Fields never contain a tab or newline and
 are never quoted or escaped: a field is the exact bytes between two tabs. Each table is sorted by its first
@@ -12,6 +12,10 @@ and that cited hashes and builds exist. It does not re-check how a verdict was r
 `hash` is CSymbol64 of `name`, written `0x` + 16 lowercase hex digits. No other spelling is accepted (unpadded,
 uppercase, decimal, signed or byte-swapped). Algorithm: [hashes/csymbol64.py](hashes/csymbol64.py). Names are
 ASCII; `A`–`Z` are lowercased before hashing.
+
+Sound names use a different hash, **Wwise-32**: FNV-1 32-bit of the lowercased name, written `0x` + 8 lowercase hex
+digits ([hashes/wwise32.py](hashes/wwise32.py), vectors in `hashes/wwise32_vectors.tsv`). Wwise-32 ids appear only
+in `data/wwise/`; every other `hash` column is CSymbol64.
 
 ## `data/names.tsv`
 
@@ -55,6 +59,42 @@ its hash), `first_build`, `last_build`, `n_builds` (number of indexed builds tha
 - `data/lanes.tsv`: one row per game and platform: `builds_indexed` of `builds_listed`, `classes_indexed`, `status`
   (`indexed`: every downloaded build is indexed; `partial`: membership is incomplete) and a short `note`.
 
+## Sounds: `data/wwise/`
+
+Sound banks are CSymbol64 assets in `names.tsv`. The objects inside a bank (events, buses, states, switches, game
+parameters) are named by Wwise-32 ids. Media files (`.wem`) inside a bank have an id that is **not** a name hash.
+
+`data/wwise/names.tsv`, key `id`:
+
+| column | values | meaning |
+|---|---|---|
+| `id` | `0x` + 8 hex | Wwise-32 of `name` |
+| `name` | `[A-Za-z0-9_]+` | the name |
+| `case` | `authored` · `folded` | as in `names.tsv`: `authored` = a game file spells it this way |
+| `verdict` | `KEEP-observed` · `KEEP-bounded` · `UNCONFIRMED` | as in `names.tsv`: observed rows are `KEEP-observed`; a search row is `KEEP-bounded` when `p_chance` ≤ 0.01, else `UNCONFIRMED` |
+| `spelling_basis` | `observed` · `search` | seen as a string in a game file, or found by a search (see `p_chance`) |
+| `p_chance` | number or empty | as in `names.tsv`; set only for `search` rows |
+| `source_game`, `source_platform`, `source_build` | as in `names.tsv` | the build whose files supplied the name (for `search`: the build whose banks hold the id) |
+
+`data/wwise/usage/<game>-<platform>.tsv`, key `id`: `id` (in `wwise/names.tsv`), `kinds`, `build`. Lists the named
+ids that the banks of `build` refer to. `kinds` is a `;`-joined sorted set of `event`, `bus` (bus or auxiliary bus),
+`effect` (effect share set) and `game_sync` (a state, switch, game parameter or one of their groups; the bank does
+not always say which).
+
+`data/wwise/media/<game>-<platform>.tsv`, key `bank`, `media`: `bank` (CSymbol64 of the bank, in `names.tsv`),
+`media` (the media id), `label`, `via_event` (Wwise-32 id of an event that plays the media), `build`. **`label` is
+our label, not a recovered name.** It is the name of the shortest named event that plays the media, with `_NN`
+added when that event plays several media; if no named event plays it, it is `evt_<via_event hex>` (+ `_NN`).
+The same media id can appear in more than one bank.
+
+## Scripts: `data/scripts/`
+
+- `functions.tsv`, key `hash`: `hash` (CSymbol64 id of a script function), `first_script` (CSymbol64 of the first
+  script asset, by id, whose symbols list it), `n_scripts` (how many scripts list it), `build`. The function's name,
+  when known, is the `names.tsv` row with the same hash. Unnamed ids are listed so they can be named.
+- `node_classes.tsv`, key `hash`: `hash` (CSymbol64 of `name`), `name` (the node class as the script symbols spell
+  it, in capitals: `[A-Z0-9_]+`), `n_scripts`, `build`. `names.tsv` may hold the same hash with its authored case.
+
 ## Generated views
 
 `tools/build_views.py` writes `games/` and `subsets/` from `data/` only. `validate.py` regenerates them and fails if
@@ -64,6 +104,12 @@ any byte differs.
   `tier`, `case`, `verdict`, `first_build`, `last_build`, `n_builds`.
 - `games/<game>/<platform>/other.tsv`: every other row whose `source_game` and `source_platform` are that game and
   platform, with `hash`, `name`, `kind`, `tier`, `case`, `verdict`.
+- `games/<game>/<platform>/sounds/names.tsv`: that platform's `wwise/usage` rows with `name` and `verdict`.
+  `sounds/media/<bank>.tsv`: one file per bank, `media`, `label`, `via_event`, `event` (the event's name or empty).
+- `games/<game>/<platform>/scripts/functions.tsv`: `script_name`, `script`, `hash`, `name`, `n_scripts`, sorted by
+  script name, so one script's functions are together. `scripts/node_classes.tsv`: `hash`, `name`, `cased_name`
+  (from `names.tsv`, or empty), `n_scripts`.
+- `subsets/wwise_lookup.json`: every Wwise-32 name as `{"0x…": name}`.
 - JSON files are objects sorted by key, one entry per line, ASCII-escaped.
 
 ## Versioning

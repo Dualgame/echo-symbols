@@ -17,6 +17,8 @@ Counts per game, per verdict and per resource class: [games/STATS.md](games/STAT
   "fix" their capitals.
 - **Lone Echo and Lone Echo II are incomplete.** Only part of their builds or resource classes is indexed (see their
   `STATUS.md`). A missing row does not mean the asset is not in the game.
+- **Media labels are not names.** A `.wem` id is not a hash of a name. `label` in `data/wwise/media/` is the name of
+  an event that plays the file, so you can tell files apart; the original file name is unknown.
 - Some names contain trailing spaces, quotes or other punctuation. These are part of the name: do not trim them.
 
 Every column and value is defined in [SPEC.md](SPEC.md).
@@ -28,10 +30,14 @@ Every column and value is defined in [SPEC.md](SPEC.md).
 | `data/names.tsv` | one row per hash: the name and how certain it is | exported |
 | `data/membership/<game>-<platform>.tsv` | the resource classes each hash ships under, and the first and last build | exported |
 | `data/coverage/`, `data/builds.tsv`, `data/lanes.tsv` | named hashes per class, the builds cited, index status per game and platform | exported |
-| `games/<game>/<platform>/` | `assets.tsv` (names in that game's build index), `other.tsv` (other names from that game's files), `STATUS.md` | generated |
+| `data/wwise/` | sound names (Wwise-32 ids), the kinds each bank uses them as, and a label for each media file | exported |
+| `data/scripts/` | script function ids (named or not) and script node class names | exported |
+| `games/<game>/<platform>/` | `assets.tsv` (names in that game's build index), `other.tsv` (other names from that game's files), `sounds/`, `scripts/`, `STATUS.md` | generated |
 | `subsets/hash_lookup.json` | every row as a flat `{"0x…": name}` map, the format most existing tools read | generated |
 | `subsets/types.json`, `subsets/<game>-<platform>.json` | type names only; one game's `assets.tsv` + `other.tsv` names | generated |
+| `subsets/wwise_lookup.json` | every sound name as `{"0x…": name}` (8-digit ids) | generated |
 | `hashes/csymbol64.py`, `hashes/vectors.tsv` | reference hash implementation and test vectors | by hand |
+| `hashes/wwise32.py`, `hashes/wwise32_vectors.tsv` | the sound-name hash (FNV-1 32-bit) and test vectors | by hand |
 | `tools/build_views.py`, `tools/validate.py` | regenerate `games/` and `subsets/`; check everything | by hand |
 
 Legacy rows that are in no build index are in `data/names.tsv` and `subsets/hash_lookup.json` only, not in `games/`.

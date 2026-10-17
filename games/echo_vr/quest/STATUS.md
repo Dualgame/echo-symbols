@@ -232,3 +232,8 @@ A hash counts once for each class it ships under. Overall 32536 / 34549 named.
 | `CSVOResource` | 1 | 1 | 100.0 |
 | `CSVOVolumeCR` | 1 | 1 | 100.0 |
 | `CSettingsUIResource` | 1 | 1 | 100.0 |
+
+## Sounds and scripts
+
+Sound names referenced by the banks: 1293. Media: 1958 in 32 banks; 1888 labelled from a named event, 70 from an unnamed one.
+Script functions and node classes are not indexed for this game and platform.

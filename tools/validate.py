@@ -18,6 +18,7 @@ sys.dont_write_bytecode = True  # a .pyc embeds this checkout's absolute path
 sys.path.insert(0, str(ROOT / "hashes"))
 sys.path.insert(0, str(ROOT / "tools"))
 from csymbol64 import canonical, csymbol64  # noqa: E402
+from wwise32 import canonical32, wwise32  # noqa: E402
 from build_views import build, read_tsv  # noqa: E402
 
 BUILD = r"\d{6,17}"
@@ -40,6 +41,15 @@ BUILDS = {"build_id": BUILD, "game": r"echo_vr|lone_echo_1|lone_echo_2", "platfo
           "date": r"|\d{4}-\d{2}-\d{2}"}
 LANES = {"game": BUILDS["game"], "platform": r"pc|quest", "builds_indexed": r"[0-9]+", "builds_listed": r"[0-9]+",
          "classes_indexed": r"[0-9]+", "status": r"indexed|partial", "note": r"[a-z0-9 ;,.]+"}
+ID32, HASH = r"0x[0-9a-f]{8}", r"0x[0-9a-f]{16}"
+WWISE = {"id": ID32, "name": r"[A-Za-z0-9_]+", "case": r"authored|folded",
+         "verdict": r"KEEP-observed|KEEP-bounded|UNCONFIRMED", "spelling_basis": r"observed|search",
+         "p_chance": NAMES["p_chance"], "source_game": BUILDS["game"], "source_platform": r"pc|quest",
+         "source_build": BUILD}
+USAGE = {"id": ID32, "kinds": r"(bus|effect|event|game_sync)(;(bus|effect|event|game_sync))*", "build": BUILD}
+MEDIA = {"bank": HASH, "media": ID32, "label": r"[A-Za-z0-9_]+", "via_event": ID32, "build": BUILD}
+FUNCTIONS = {"hash": HASH, "first_script": HASH, "n_scripts": r"[1-9][0-9]*", "build": BUILD}
+NODE_CLASSES = {"hash": HASH, "name": r"[A-Z0-9_]+", "n_scripts": r"[1-9][0-9]*", "build": BUILD}
 PRIVATE = [r"\b[A-Za-z]:[\\/][A-Za-z0-9_]", r"/home/", r"/mnt/", r"/tmp/", r"/Users/", r"\\\\[A-Za-z0-9.-]+\\",
            r"(?<![:/])//[A-Za-z0-9.-]+/", r"\b[0-9a-fA-F]{40,}\b",
            r"\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b", r"[\w.+-]+@[\w-]+\.(com|net|org|io)\b"]
@@ -95,6 +105,53 @@ def check_files():
     return len(literals)
 
 
+def check_sounds_scripts(data, by_hash, builds):
+    """data/wwise/ and data/scripts/: every id rehashes or resolves; returns the builds they cite."""
+    cited = set()
+
+    def lane_of(name, r, stem=None):  # a cited build must exist and belong to the file's game and platform
+        b = builds.get(r["build"])
+        if b and stem and f"{b['game']}-{b['platform']}" != stem:
+            fail(f"{name}: build {r['build']} is not {stem}")
+        cited.add(r["build"])
+
+    wwise = {}
+    for r in check_table(data / "wwise/names.tsv", WWISE, "id"):
+        wwise[r["id"]] = r["name"]
+        if canonical32(wwise32(r["name"])) != r["id"]:
+            fail(f"wwise/names.tsv: {r['id']} does not hash {r['name']!r}")
+        if (r["spelling_basis"] == "search") != bool(r["p_chance"]):
+            fail(f"wwise/names.tsv: {r['id']} p_chance iff spelling_basis=search")
+        want = ("KEEP-observed" if r["spelling_basis"] == "observed" else
+                "KEEP-bounded" if r["p_chance"] and float(r["p_chance"]) <= 0.01 else "UNCONFIRMED")
+        if r["verdict"] != want:
+            fail(f"wwise/names.tsv: {r['id']} verdict {r['verdict']} (rule gives {want})")
+        lane_of("wwise/names.tsv", {"build": r["source_build"]}, f"{r['source_game']}-{r['source_platform']}")
+    for path in sorted((data / "wwise/usage").glob("*.tsv")):
+        for r in check_table(path, USAGE, "id"):
+            lane_of(f"wwise/usage/{path.name}", r, path.stem)
+            if r["id"] not in wwise:
+                fail(f"wwise/usage/{path.name}: {r['id']} not in wwise/names.tsv")
+            if r["kinds"].split(";") != sorted(set(r["kinds"].split(";"))):
+                fail(f"wwise/usage/{path.name}: {r['id']} kinds not sorted / unique")
+    for path in sorted((data / "wwise/media").glob("*.tsv")):
+        for r in check_table(path, MEDIA, "bank,media"):
+            lane_of(f"wwise/media/{path.name}", r, path.stem)
+            if r["bank"] not in by_hash:
+                fail(f"wwise/media/{path.name}: bank {r['bank']} not in names.tsv")
+            # a media id is not a name hash: its label is the via_event's name (or evt_<id>), + _NN if shared
+            stem = re.escape(wwise.get(r["via_event"], "evt_" + r["via_event"][2:]))
+            if not re.fullmatch(stem + r"(_\d{2})?", r["label"]):
+                fail(f"wwise/media/{path.name}: {r['bank']} {r['media']} label does not follow via_event")
+    for r in check_table(data / "scripts/functions.tsv", FUNCTIONS):
+        lane_of("scripts/functions.tsv", r)
+    for r in check_table(data / "scripts/node_classes.tsv", NODE_CLASSES):
+        lane_of("scripts/node_classes.tsv", r)
+        if canonical(csymbol64(r["name"])) != r["hash"]:
+            fail(f"scripts/node_classes.tsv: {r['hash']} does not hash {r['name']!r}")
+    return cited
+
+
 def main():
     data = ROOT / "data"
     names = check_table(data / "names.tsv", NAMES)
@@ -118,11 +175,15 @@ def main():
         for c in check_table(data / "coverage" / stem, COVERAGE, "class"):
             if int(c["named"]) > int(c["file_symbols"]):
                 fail(f"coverage/{stem}: {c['class']} named > total")
+    cited |= check_sounds_scripts(data, by_hash, {r["build_id"]: r for r in read_tsv(data / "builds.tsv")})
     if cited - builds:
         fail(f"builds.tsv: {len(cited - builds)} cited builds missing")
     for v in read_tsv(ROOT / "hashes/vectors.tsv"):
         if canonical(csymbol64(v["name"])) != v["hash"]:
             fail(f"vectors.tsv: {v['name']!r}")
+    for v in read_tsv(ROOT / "hashes/wwise32_vectors.tsv"):
+        if canonical32(wwise32(v["name"])) != v["id"]:
+            fail(f"wwise32_vectors.tsv: {v['name']!r}")
     with tempfile.TemporaryDirectory() as tmp:
         build(Path(tmp))
         for sub in ("games", "subsets"):
@@ -131,9 +192,11 @@ def main():
             if want != have:
                 fail(f"{sub}/ is stale: run tools/build_views.py ({len(set(want) ^ set(have))} files differ in set)")
     n_literals = check_files()
+    n_wwise = len(read_tsv(data / "wwise/names.tsv"))
     for e in errors[:50]:
         print("FAIL", e)
-    print(f"{len(names)} names, {len(builds)} builds, {len(lanes)} lanes, {n_literals} private literals checked: "
+    print(f"{len(names)} names, {len(builds)} builds, {len(lanes)} lanes, {n_wwise} Wwise names, "
+          f"{n_literals} private literals checked: "
           + ("OK" if not errors else f"{len(errors)} errors"))
     return 1 if errors else 0
 

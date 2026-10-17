@@ -25,3 +25,8 @@ A hash counts once for each class it ships under. Overall 5512 / 8480 named.
 | `CGTextureResource` | 22 | 22 | 100.0 |
 | `CGMaterialResource` | 17 | 17 | 100.0 |
 | `CGMaterialFXResource` | 1 | 1 | 100.0 |
+
+## Sounds and scripts
+
+Sound bank contents (Wwise names, media) are not indexed for this game and platform.
+Script functions and node classes are not indexed for this game and platform.
