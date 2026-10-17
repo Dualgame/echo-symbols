@@ -152,27 +152,28 @@ def check_sounds_scripts(data, by_hash, builds):
             if not re.fullmatch(stem + r"(_\d{2})?", r["label"]):
                 fail(f"wwise/media/{path.name}: {r['bank']} {r['media']} label does not follow via_event")
     functions = {}
-    for r in check_table(data / "scripts/functions.tsv", FUNCTIONS):
+    for r in check_table(data / "scripts/functions.tsv", FUNCTIONS, "hash,build"):  # PC and Quest share ids
         lane_of("scripts/functions.tsv", r)
-        functions[r["hash"]] = r
+        functions[(r["hash"], r["build"])] = r
     declares, seen = {}, set()
-    for r in check_table(data / "scripts/function_scripts.tsv", FUNCTION_SCRIPTS, "function,script"):
+    for r in check_table(data / "scripts/function_scripts.tsv", FUNCTION_SCRIPTS, "function,script,build"):
         lane_of("scripts/function_scripts.tsv", r)
-        if r["function"] not in functions:
-            fail(f"scripts/function_scripts.tsv: {r['function']} not in functions.tsv")
-        seen.add((r["function"], r["script"]))
-        declares[r["function"]] = declares.get(r["function"], 0) + (r["role"] == "declares")
+        key = (r["function"], r["build"])
+        if key not in functions:
+            fail(f"scripts/function_scripts.tsv: {r['function']} not in functions.tsv for build {r['build']}")
+        seen.add((*key, r["script"]))
+        declares[key] = declares.get(key, 0) + (r["role"] == "declares")
     role_of = {}
-    for r in check_table(data / "scripts/constant_scripts.tsv", CONSTANT_SCRIPTS, "constant,script"):
+    for r in check_table(data / "scripts/constant_scripts.tsv", CONSTANT_SCRIPTS, "constant,script,build"):
         lane_of("scripts/constant_scripts.tsv", r)
         if r["constant"] not in by_hash:
             fail(f"scripts/constant_scripts.tsv: {r['constant']} not in names.tsv")
         if role_of.setdefault(r["constant"], r["role"]) != r["role"]:
             fail(f"scripts/constant_scripts.tsv: {r['constant']} has more than one role")
-    for h, f in functions.items():  # the per-script list must agree with the PDB's own count and first script
-        if declares.get(h, 0) != int(f["n_scripts"]) or (h, f["first_script"]) not in seen:
-            fail(f"scripts/function_scripts.tsv: {h} disagrees with functions.tsv")
-    for r in check_table(data / "scripts/node_classes.tsv", NODE_CLASSES):
+    for key, f in functions.items():  # the per-script list must agree with the function's count and first script
+        if declares.get(key, 0) != int(f["n_scripts"]) or (*key, f["first_script"]) not in seen:
+            fail(f"scripts/function_scripts.tsv: {key} disagrees with functions.tsv")
+    for r in check_table(data / "scripts/node_classes.tsv", NODE_CLASSES, "hash,build"):
         lane_of("scripts/node_classes.tsv", r)
         if canonical(csymbol64(r["name"])) != r["hash"]:
             fail(f"scripts/node_classes.tsv: {r['hash']} does not hash {r['name']!r}")

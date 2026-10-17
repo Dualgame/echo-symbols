@@ -1,10 +1,15 @@
 # Changelog
 
-## 0.3.0 — unreleased
+## 0.3.0 — 2026-10-17
 
-- New table `data/scripts/function_scripts.tsv`: every script that declares or references each script function
+- Echo VR Quest scripts: 1,003 script function ids (813 named), 1,890 script/function pairs, 2,096 named graph
+  constants in 4,749 script/constant pairs and 936 node classes; view `games/echo_vr/quest/scripts/`.
+  **Key change:** the `data/scripts/` tables now hold PC and Quest rows, so each key includes `build`
+  (`functions.tsv` and `node_classes.tsv`: `hash`, `build`). Columns are unchanged; a reader that keyed a table by
+  `hash` alone should filter on `build` first.
+- New table `data/scripts/function_scripts.tsv` (PC): every script that declares or references each script function
   (2,760 pairs over 375 scripts), replacing the first-script-only grouping in `games/echo_vr/pc/scripts/functions.tsv`.
-- New table `data/scripts/constant_scripts.tsv`: 2,886 named graph constants with their role and every script that
+- New table `data/scripts/constant_scripts.tsv` (PC): 2,886 named graph constants with their role and every script that
   holds them (6,593 pairs); view `games/echo_vr/pc/scripts/constants.tsv`.
 - New table `data/types.tsv`: every type symbol the indexed builds ship (1,003 hashes, 1,116 game/platform rows),
   with its class, layer suffix, first and last build and asset count; 22 have an unknown class. View

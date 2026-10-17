@@ -236,7 +236,7 @@ A hash counts once for each class it ships under. Overall 32536 / 34549 named.
 ## Sounds and scripts
 
 Sound names referenced by the banks: 1293. Media: 1958 in 32 banks; 1888 labelled from a named event, 70 from an unnamed one.
-Script functions and node classes are not indexed for this game and platform.
+Script functions: 813 of 1003 named, in 1890 script/function pairs. Graph constants: 2096 in 4749 script/constant pairs. Script node classes: 936.
 Shader-set names split into owner, material, pass and features: 106 (`shaders/shadersets.tsv`).
 
 ## Types

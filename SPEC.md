@@ -109,18 +109,23 @@ The same media id can appear in more than one bank.
 
 ## Scripts: `data/scripts/`
 
-- `functions.tsv`, key `hash`: `hash` (CSymbol64 id of a script function), `first_script` (CSymbol64 of the first
-  script asset, by id, whose symbols list it), `n_scripts` (how many scripts list it), `build`. The function's name,
+Each table has Echo VR PC and Quest rows, told apart by `build`. The two platforms share function, script and
+class ids, so every key includes `build`. PC counts come from the script symbol files (PDB); Quest has none, so its
+counts come from the script libraries' own symbol tables.
+
+- `functions.tsv`, key `hash`, `build`: `hash` (CSymbol64 id of a script function), `first_script` (CSymbol64 of
+  the first script asset, by id, whose symbols list it), `n_scripts` (how many scripts list it), `build`. The function's name,
   when known, is the `names.tsv` row with the same hash. Unnamed ids are listed so they can be named.
-- `function_scripts.tsv`, key `function`, `script`: every script whose code holds the function id. `role` is
+- `function_scripts.tsv`, key `function`, `script`, `build`: every script whose code holds the function id. `role` is
   `declares` (the script defines the function; per function this count equals `n_scripts`) or `references` (the
   script only uses it). `functions.tsv`'s `first_script` is always one of these rows.
-- `constant_scripts.tsv`, key `constant`, `script`: graph constants (variables, events, node inputs, execution
+- `constant_scripts.tsv`, key `constant`, `script`, `build`: graph constants (variables, events, node inputs, execution
   pins, ...) named in `names.tsv`, one row per script whose code holds the constant. `role`: `variable` ·
   `node_input_value` · `exec_pin` · `graph_state` · `event` · `function_data` · `rdata_table` · `type_or_funcparam` ·
   `expression_input` · `function_param` · `timeline_node_value` · `debug_name` · `other`; one role per constant.
-- `node_classes.tsv`, key `hash`: `hash` (CSymbol64 of `name`), `name` (the node class as the script symbols spell
-  it, in capitals: `[A-Z0-9_]+`), `n_scripts`, `build`. `names.tsv` may hold the same hash with its authored case.
+- `node_classes.tsv`, key `hash`, `build`: `hash` (CSymbol64 of `name`), `name` (the node class as the script symbols
+  spell it, in capitals: `[A-Z0-9_]+`), `n_scripts`, `build`. On Quest `n_scripts` is a lower bound: a class whose
+  code was inlined into a library leaves no symbol there. `names.tsv` may hold the same hash with its authored case.
 
 ## Generated views
 
