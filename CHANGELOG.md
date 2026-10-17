@@ -6,6 +6,11 @@
   (2,760 pairs over 375 scripts), replacing the first-script-only grouping in `games/echo_vr/pc/scripts/functions.tsv`.
 - New table `data/scripts/constant_scripts.tsv`: 2,886 named graph constants with their role and every script that
   holds them (6,593 pairs); view `games/echo_vr/pc/scripts/constants.tsv`.
+- New table `data/types.tsv`: every type symbol the indexed builds ship (1,003 hashes, 1,116 game/platform rows),
+  with its class, layer suffix, first and last build and asset count; 22 have an unknown class. View
+  `games/<game>/<platform>/types.tsv`.
+- Releases now carry the whole data set as JSON (`echo-symbols.json.gz` and one file per game and platform), built
+  by `tools/export_json.py` in a release workflow.
 - New view `games/<game>/<platform>/shaders/shadersets.tsv`: shader-set names split into owner, material, pass and
   features.
 

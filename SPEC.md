@@ -59,6 +59,26 @@ its hash), `first_build`, `last_build`, `n_builds` (number of indexed builds tha
 - `data/lanes.tsv`: one row per game and platform: `builds_indexed` of `builds_listed`, `classes_indexed`, `status`
   (`indexed`: every downloaded build is indexed; `partial`: membership is incomplete) and a short `note`.
 
+## Types: `data/types.tsv`
+
+Key `hash`, `game`, `platform`: one row per type symbol (the hash a package uses to say what class an asset is)
+that game's indexed builds ship. A type symbol is CSymbol64 of the class name plus a layer suffix, so one class has
+a different hash per platform and layer.
+
+| column | values | meaning |
+|---|---|---|
+| `hash` | `0x` + 16 hex | the type symbol as a package stores it |
+| `class` | class name or empty | the class; empty when it is not known. A row with a class always has its name in `names.tsv` |
+| `suffix` | `Win7` · `Win10` · `Android`, optionally + `GPU` or `Debug`; empty when `class` is | `hash` = CSymbol64(`class` + `suffix`) |
+| `schema` | `win7` · `win10` · `android` | the package format the hash was read from (known even when the class is not) |
+| `layer` | `primary` · `gpu` · `debug` · `unknown` | from the suffix; `unknown` when `class` is empty |
+| `game`, `platform` | as in `builds.tsv` | |
+| `first_build`, `last_build` | build ids | first and last indexed build of that game and platform that ships an asset of this type |
+| `assets` | count | distinct asset hashes ever shipped under this type in that game and platform |
+
+Only shipped type symbols are listed. A class does not have every suffix: the engine computes a type symbol only for
+the layers the class has, so a hash computed for any other suffix is not a real type.
+
 ## Sounds: `data/wwise/`
 
 Sound banks are CSymbol64 assets in `names.tsv`. The objects inside a bank (events, buses, states, switches, game
@@ -122,7 +142,18 @@ any byte differs.
   shader-set form `<owner>_<owner_kind>~<material>~<pass>[~<feature>…]`, split into `owner`, `owner_kind`
   (`radscn` · `radlvl` · `radins` · `raddynins`), `material`, `pass`, `features` (`;`-joined, in name order), plus
   `hash`, `tier`, `case`. Sorted by owner, material, pass, features.
+- `games/<game>/<platform>/types.tsv`: that game's `data/types.tsv` rows, `class`, `suffix`, `layer`, `hash`,
+  `first_build`, `last_build`, `assets`, sorted by class (unknown classes last).
 - JSON files are objects sorted by key, one entry per line, ASCII-escaped.
+
+## JSON release files
+
+Each GitHub release from 0.3.0 on has `echo-symbols.json.gz` and one `<game>-<platform>.json.gz`, written by
+`tools/export_json.py`. They hold the same data as `data/` and nothing more: `names` is an object keyed by hash,
+each row with its `membership` per `<game>-<platform>`; the other tables are lists of rows keyed by column name.
+Every value is the TSV string. A per-game file holds that game's membership hashes plus the names its own files
+supplied, and the types, builds, sounds and scripts of that game and platform. They are release files, not part of
+the repository.
 
 ## Versioning
 
