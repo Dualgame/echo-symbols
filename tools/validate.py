@@ -49,6 +49,7 @@ WWISE = {"id": ID32, "name": r"[A-Za-z0-9_]+", "case": r"authored|folded",
 USAGE = {"id": ID32, "kinds": r"(bus|effect|event|game_sync)(;(bus|effect|event|game_sync))*", "build": BUILD}
 MEDIA = {"bank": HASH, "media": ID32, "label": r"[A-Za-z0-9_]+", "via_event": ID32, "build": BUILD}
 FUNCTIONS = {"hash": HASH, "first_script": HASH, "n_scripts": r"[1-9][0-9]*", "build": BUILD}
+FUNCTION_SCRIPTS = {"function": HASH, "script": HASH, "role": r"declares|references", "build": BUILD}
 NODE_CLASSES = {"hash": HASH, "name": r"[A-Z0-9_]+", "n_scripts": r"[1-9][0-9]*", "build": BUILD}
 PRIVATE = [r"\b[A-Za-z]:[\\/][A-Za-z0-9_]", r"/home/", r"/mnt/", r"/tmp/", r"/Users/", r"\\\\[A-Za-z0-9.-]+\\",
            r"(?<![:/])//[A-Za-z0-9.-]+/", r"\b[0-9a-fA-F]{40,}\b",
@@ -143,8 +144,20 @@ def check_sounds_scripts(data, by_hash, builds):
             stem = re.escape(wwise.get(r["via_event"], "evt_" + r["via_event"][2:]))
             if not re.fullmatch(stem + r"(_\d{2})?", r["label"]):
                 fail(f"wwise/media/{path.name}: {r['bank']} {r['media']} label does not follow via_event")
+    functions = {}
     for r in check_table(data / "scripts/functions.tsv", FUNCTIONS):
         lane_of("scripts/functions.tsv", r)
+        functions[r["hash"]] = r
+    declares, seen = {}, set()
+    for r in check_table(data / "scripts/function_scripts.tsv", FUNCTION_SCRIPTS, "function,script"):
+        lane_of("scripts/function_scripts.tsv", r)
+        if r["function"] not in functions:
+            fail(f"scripts/function_scripts.tsv: {r['function']} not in functions.tsv")
+        seen.add((r["function"], r["script"]))
+        declares[r["function"]] = declares.get(r["function"], 0) + (r["role"] == "declares")
+    for h, f in functions.items():  # the per-script list must agree with the PDB's own count and first script
+        if declares.get(h, 0) != int(f["n_scripts"]) or (h, f["first_script"]) not in seen:
+            fail(f"scripts/function_scripts.tsv: {h} disagrees with functions.tsv")
     for r in check_table(data / "scripts/node_classes.tsv", NODE_CLASSES):
         lane_of("scripts/node_classes.tsv", r)
         if canonical(csymbol64(r["name"])) != r["hash"]:

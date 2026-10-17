@@ -92,6 +92,9 @@ The same media id can appear in more than one bank.
 - `functions.tsv`, key `hash`: `hash` (CSymbol64 id of a script function), `first_script` (CSymbol64 of the first
   script asset, by id, whose symbols list it), `n_scripts` (how many scripts list it), `build`. The function's name,
   when known, is the `names.tsv` row with the same hash. Unnamed ids are listed so they can be named.
+- `function_scripts.tsv`, key `function`, `script`: every script whose code holds the function id. `role` is
+  `declares` (the script defines the function; per function this count equals `n_scripts`) or `references` (the
+  script only uses it). `functions.tsv`'s `first_script` is always one of these rows.
 - `node_classes.tsv`, key `hash`: `hash` (CSymbol64 of `name`), `name` (the node class as the script symbols spell
   it, in capitals: `[A-Z0-9_]+`), `n_scripts`, `build`. `names.tsv` may hold the same hash with its authored case.
 
@@ -106,8 +109,8 @@ any byte differs.
   platform, with `hash`, `name`, `kind`, `tier`, `case`, `verdict`.
 - `games/<game>/<platform>/sounds/names.tsv`: that platform's `wwise/usage` rows with `name` and `verdict`.
   `sounds/media/<bank>.tsv`: one file per bank, `media`, `label`, `via_event`, `event` (the event's name or empty).
-- `games/<game>/<platform>/scripts/functions.tsv`: `script_name`, `script`, `hash`, `name`, `n_scripts`, sorted by
-  script name, so one script's functions are together. `scripts/node_classes.tsv`: `hash`, `name`, `cased_name`
+- `games/<game>/<platform>/scripts/functions.tsv`: one row per `function_scripts.tsv` pair: `script_name`,
+  `script`, `role`, `hash`, `name`, sorted by script name, so one script's functions are together. `scripts/node_classes.tsv`: `hash`, `name`, `cased_name`
   (from `names.tsv`, or empty), `n_scripts`.
 - `subsets/wwise_lookup.json`: every Wwise-32 name as `{"0x…": name}`.
 - `games/<game>/<platform>/shaders/shadersets.tsv`: every name of that game's `assets.tsv` + `other.tsv` that has the

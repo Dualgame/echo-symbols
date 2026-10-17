@@ -2,8 +2,10 @@
 
 ## 0.3.0 — unreleased
 
+- New table `data/scripts/function_scripts.tsv`: every script that declares or references each script function
+  (2,760 pairs over 375 scripts), replacing the first-script-only grouping in `games/echo_vr/pc/scripts/functions.tsv`.
 - New view `games/<game>/<platform>/shaders/shadersets.tsv`: shader-set names split into owner, material, pass and
-  features. No data table changed.
+  features.
 
 ## 0.2.0 — 2026-10-17
 

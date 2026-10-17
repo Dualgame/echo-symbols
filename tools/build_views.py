@@ -52,7 +52,8 @@ def sound_script_views(data, names, lane_dir, stem, lane_builds):
         media = read_tsv(data / "wwise/media" / f"{stem}.tsv")
         banks = {}
         for m in media:
-            banks.setdefault(names[m["bank"]]["name"], []).append({**m, "event": wwise.get(m["via_event"], {}).get("name", "")})
+            event = wwise.get(m["via_event"], {}).get("name", "")
+            banks.setdefault(names[m["bank"]]["name"], []).append({**m, "event": event})
         for bank, body in banks.items():
             write_tsv(lane_dir / "sounds/media" / f"{bank}.tsv", ["media", "label", "via_event", "event"], body)
         by_event = sum(1 for m in media if m["via_event"] in wwise)
@@ -64,13 +65,15 @@ def sound_script_views(data, names, lane_dir, stem, lane_builds):
     nodes = [r for r in read_tsv(data / "scripts/node_classes.tsv") if r["build"] in lane_builds]
     if funcs or nodes:
         script = lambda h: names[h]["name"] if h in names else ""  # noqa: E731
-        body = sorted(({"script_name": script(f["first_script"]), "script": f["first_script"], "hash": f["hash"],
-                        "name": script(f["hash"]), "n_scripts": f["n_scripts"]} for f in funcs),
-                      key=lambda r: (r["script_name"], r["script"], r["hash"]))
-        write_tsv(lane_dir / "scripts/functions.tsv", ["script_name", "script", "hash", "name", "n_scripts"], body)
+        pairs = [p for p in read_tsv(data / "scripts/function_scripts.tsv") if p["build"] in lane_builds]
+        body = sorted(({"script_name": script(p["script"]), "script": p["script"], "role": p["role"],
+                        "hash": p["function"], "name": script(p["function"])} for p in pairs),
+                      key=lambda r: (r["script_name"], r["script"], r["role"], r["hash"]))
+        write_tsv(lane_dir / "scripts/functions.tsv", ["script_name", "script", "role", "hash", "name"], body)
         write_tsv(lane_dir / "scripts/node_classes.tsv", ["hash", "name", "cased_name", "n_scripts"],
                   [{**n, "cased_name": script(n["hash"])} for n in nodes])
-        lines.append(f"Script functions: {sum(1 for r in body if r['name'])} of {len(body)} named. "
+        lines.append(f"Script functions: {sum(1 for f in funcs if f['hash'] in names)} of {len(funcs)} named, "
+                     f"in {len(body)} script/function pairs. "
                      f"Script node classes: {len(nodes)}.")
     else:
         lines.append("Script functions and node classes are not indexed for this game and platform.")
