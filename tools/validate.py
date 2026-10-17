@@ -50,6 +50,10 @@ USAGE = {"id": ID32, "kinds": r"(bus|effect|event|game_sync)(;(bus|effect|event|
 MEDIA = {"bank": HASH, "media": ID32, "label": r"[A-Za-z0-9_]+", "via_event": ID32, "build": BUILD}
 FUNCTIONS = {"hash": HASH, "first_script": HASH, "n_scripts": r"[1-9][0-9]*", "build": BUILD}
 FUNCTION_SCRIPTS = {"function": HASH, "script": HASH, "role": r"declares|references", "build": BUILD}
+CONSTANT_SCRIPTS = {"constant": HASH, "script": HASH,
+                    "role": r"variable|node_input_value|exec_pin|graph_state|event|function_data|rdata_table|"
+                            r"type_or_funcparam|expression_input|function_param|timeline_node_value|debug_name|other",
+                    "build": BUILD}
 NODE_CLASSES = {"hash": HASH, "name": r"[A-Z0-9_]+", "n_scripts": r"[1-9][0-9]*", "build": BUILD}
 PRIVATE = [r"\b[A-Za-z]:[\\/][A-Za-z0-9_]", r"/home/", r"/mnt/", r"/tmp/", r"/Users/", r"\\\\[A-Za-z0-9.-]+\\",
            r"(?<![:/])//[A-Za-z0-9.-]+/", r"\b[0-9a-fA-F]{40,}\b",
@@ -155,6 +159,13 @@ def check_sounds_scripts(data, by_hash, builds):
             fail(f"scripts/function_scripts.tsv: {r['function']} not in functions.tsv")
         seen.add((r["function"], r["script"]))
         declares[r["function"]] = declares.get(r["function"], 0) + (r["role"] == "declares")
+    role_of = {}
+    for r in check_table(data / "scripts/constant_scripts.tsv", CONSTANT_SCRIPTS, "constant,script"):
+        lane_of("scripts/constant_scripts.tsv", r)
+        if r["constant"] not in by_hash:
+            fail(f"scripts/constant_scripts.tsv: {r['constant']} not in names.tsv")
+        if role_of.setdefault(r["constant"], r["role"]) != r["role"]:
+            fail(f"scripts/constant_scripts.tsv: {r['constant']} has more than one role")
     for h, f in functions.items():  # the per-script list must agree with the PDB's own count and first script
         if declares.get(h, 0) != int(f["n_scripts"]) or (h, f["first_script"]) not in seen:
             fail(f"scripts/function_scripts.tsv: {h} disagrees with functions.tsv")

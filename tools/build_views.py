@@ -72,8 +72,14 @@ def sound_script_views(data, names, lane_dir, stem, lane_builds):
         write_tsv(lane_dir / "scripts/functions.tsv", ["script_name", "script", "role", "hash", "name"], body)
         write_tsv(lane_dir / "scripts/node_classes.tsv", ["hash", "name", "cased_name", "n_scripts"],
                   [{**n, "cased_name": script(n["hash"])} for n in nodes])
+        consts = [c for c in read_tsv(data / "scripts/constant_scripts.tsv") if c["build"] in lane_builds]
+        write_tsv(lane_dir / "scripts/constants.tsv", ["script_name", "script", "role", "hash", "name"],
+                  sorted(({"script_name": script(c["script"]), "script": c["script"], "role": c["role"],
+                           "hash": c["constant"], "name": script(c["constant"])} for c in consts),
+                         key=lambda r: (r["script_name"], r["script"], r["role"], r["hash"])))
         lines.append(f"Script functions: {sum(1 for f in funcs if f['hash'] in names)} of {len(funcs)} named, "
-                     f"in {len(body)} script/function pairs. "
+                     f"in {len(body)} script/function pairs. Graph constants: {len({c['constant'] for c in consts})}"
+                     f" in {len(consts)} script/constant pairs. "
                      f"Script node classes: {len(nodes)}.")
     else:
         lines.append("Script functions and node classes are not indexed for this game and platform.")

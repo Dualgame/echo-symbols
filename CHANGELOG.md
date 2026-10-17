@@ -4,6 +4,8 @@
 
 - New table `data/scripts/function_scripts.tsv`: every script that declares or references each script function
   (2,760 pairs over 375 scripts), replacing the first-script-only grouping in `games/echo_vr/pc/scripts/functions.tsv`.
+- New table `data/scripts/constant_scripts.tsv`: 2,886 named graph constants with their role and every script that
+  holds them (6,593 pairs); view `games/echo_vr/pc/scripts/constants.tsv`.
 - New view `games/<game>/<platform>/shaders/shadersets.tsv`: shader-set names split into owner, material, pass and
   features.
 

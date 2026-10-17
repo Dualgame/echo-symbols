@@ -95,6 +95,10 @@ The same media id can appear in more than one bank.
 - `function_scripts.tsv`, key `function`, `script`: every script whose code holds the function id. `role` is
   `declares` (the script defines the function; per function this count equals `n_scripts`) or `references` (the
   script only uses it). `functions.tsv`'s `first_script` is always one of these rows.
+- `constant_scripts.tsv`, key `constant`, `script`: graph constants (variables, events, node inputs, execution
+  pins, ...) named in `names.tsv`, one row per script whose code holds the constant. `role`: `variable` ·
+  `node_input_value` · `exec_pin` · `graph_state` · `event` · `function_data` · `rdata_table` · `type_or_funcparam` ·
+  `expression_input` · `function_param` · `timeline_node_value` · `debug_name` · `other`; one role per constant.
 - `node_classes.tsv`, key `hash`: `hash` (CSymbol64 of `name`), `name` (the node class as the script symbols spell
   it, in capitals: `[A-Z0-9_]+`), `n_scripts`, `build`. `names.tsv` may hold the same hash with its authored case.
 
@@ -110,7 +114,8 @@ any byte differs.
 - `games/<game>/<platform>/sounds/names.tsv`: that platform's `wwise/usage` rows with `name` and `verdict`.
   `sounds/media/<bank>.tsv`: one file per bank, `media`, `label`, `via_event`, `event` (the event's name or empty).
 - `games/<game>/<platform>/scripts/functions.tsv`: one row per `function_scripts.tsv` pair: `script_name`,
-  `script`, `role`, `hash`, `name`, sorted by script name, so one script's functions are together. `scripts/node_classes.tsv`: `hash`, `name`, `cased_name`
+  `script`, `role`, `hash`, `name`, sorted by script name, so one script's functions are together.
+  `scripts/constants.tsv`: the same layout for `constant_scripts.tsv`. `scripts/node_classes.tsv`: `hash`, `name`, `cased_name`
   (from `names.tsv`, or empty), `n_scripts`.
 - `subsets/wwise_lookup.json`: every Wwise-32 name as `{"0x…": name}`.
 - `games/<game>/<platform>/shaders/shadersets.tsv`: every name of that game's `assets.tsv` + `other.tsv` that has the
