@@ -32,7 +32,7 @@ Every column and value is defined in [SPEC.md](SPEC.md).
 | `data/coverage/`, `data/builds.tsv`, `data/lanes.tsv` | named hashes per class, the builds cited, index status per game and platform | exported |
 | `data/wwise/` | sound names (Wwise-32 ids), the kinds each bank uses them as, and a label for each media file | exported |
 | `data/scripts/` | script function ids (named or not) and script node class names | exported |
-| `games/<game>/<platform>/` | `assets.tsv` (names in that game's build index), `other.tsv` (other names from that game's files), `sounds/`, `scripts/`, `STATUS.md` | generated |
+| `games/<game>/<platform>/` | `assets.tsv` (names in that game's build index), `other.tsv` (other names from that game's files), `sounds/`, `scripts/`, `shaders/`, `STATUS.md` | generated |
 | `subsets/hash_lookup.json` | every row as a flat `{"0x…": name}` map, the format most existing tools read | generated |
 | `subsets/types.json`, `subsets/<game>-<platform>.json` | type names only; one game's `assets.tsv` + `other.tsv` names | generated |
 | `subsets/wwise_lookup.json` | every sound name as `{"0x…": name}` (8-digit ids) | generated |

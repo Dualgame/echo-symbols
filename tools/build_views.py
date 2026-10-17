@@ -6,10 +6,13 @@
 """
 import argparse
 import json
+import re
 import shutil
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+# A shader-set name: <owner>_<owner kind>~<material>~<pass>[~<feature>...]
+SHADERSET = re.compile(r"(.+)_(radscn|radlvl|radins|raddynins)~([^~]+)~([^~]+)((?:~[^~]+)*)")
 
 
 def read_tsv(path):
@@ -72,6 +75,23 @@ def sound_script_views(data, names, lane_dir, stem, lane_builds):
     else:
         lines.append("Script functions and node classes are not indexed for this game and platform.")
     return lines
+
+
+def shader_views(lane_dir, rows):
+    """games/<game>/<platform>/shaders/shadersets.tsv: shader-set names split into their parts."""
+    body = []
+    for r in rows:
+        m = SHADERSET.fullmatch(r["name"])
+        if m:
+            body.append({**r, "owner": m[1], "owner_kind": m[2], "material": m[3], "pass": m[4],
+                         "features": m[5][1:].replace("~", ";")})
+    if not body:
+        return []
+    body.sort(key=lambda r: (r["owner"], r["material"], r["pass"], r["features"], r["hash"]))
+    write_tsv(lane_dir / "shaders/shadersets.tsv", ["owner", "owner_kind", "material", "pass", "features", "hash",
+                                                     "tier", "case"], body)
+    return [f"Shader-set names split into owner, material, pass and features: {len(body)} "
+            "(`shaders/shadersets.tsv`)."]
 
 
 def status_md(lane, rows, assets, other, coverage, extra):
@@ -146,6 +166,7 @@ def build(out):
         coverage = read_tsv(data / "coverage" / f"{stem}.tsv")
         lane_builds = {b["build_id"] for b in builds if (b["game"], b["platform"]) == (game, platform)}
         extra = sound_script_views(data, names, lane_dir, stem, lane_builds)
+        extra += shader_views(lane_dir, assets + other)
         (lane_dir / "STATUS.md").write_text(status_md(lane, assets + other, assets, other, coverage, extra),
                                             encoding="utf-8", newline="\n")
         write_json(out / "subsets" / f"{stem}.json", {r["hash"]: r["name"] for r in assets + other})

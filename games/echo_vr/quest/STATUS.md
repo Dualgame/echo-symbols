@@ -237,3 +237,4 @@ A hash counts once for each class it ships under. Overall 32536 / 34549 named.
 
 Sound names referenced by the banks: 1293. Media: 1958 in 32 banks; 1888 labelled from a named event, 70 from an unnamed one.
 Script functions and node classes are not indexed for this game and platform.
+Shader-set names split into owner, material, pass and features: 106 (`shaders/shadersets.tsv`).

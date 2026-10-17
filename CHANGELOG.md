@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.0 — unreleased
+
+- New view `games/<game>/<platform>/shaders/shadersets.tsv`: shader-set names split into owner, material, pass and
+  features. No data table changed.
+
 ## 0.2.0 — 2026-10-17
 
 Adds sounds and scripts for Echo VR. Sounds: 3,706 Wwise-32 sound names (events, buses, states, switches, game

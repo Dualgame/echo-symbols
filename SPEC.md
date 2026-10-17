@@ -1,4 +1,4 @@
-# Data specification — v0.2
+# Data specification — v0.3
 
 All tables are UTF-8 TSV with a header row, LF line endings and no BOM. Fields never contain a tab or newline and
 are never quoted or escaped: a field is the exact bytes between two tabs. Each table is sorted by its first
@@ -110,6 +110,10 @@ any byte differs.
   script name, so one script's functions are together. `scripts/node_classes.tsv`: `hash`, `name`, `cased_name`
   (from `names.tsv`, or empty), `n_scripts`.
 - `subsets/wwise_lookup.json`: every Wwise-32 name as `{"0x…": name}`.
+- `games/<game>/<platform>/shaders/shadersets.tsv`: every name of that game's `assets.tsv` + `other.tsv` that has the
+  shader-set form `<owner>_<owner_kind>~<material>~<pass>[~<feature>…]`, split into `owner`, `owner_kind`
+  (`radscn` · `radlvl` · `radins` · `raddynins`), `material`, `pass`, `features` (`;`-joined, in name order), plus
+  `hash`, `tier`, `case`. Sorted by owner, material, pass, features.
 - JSON files are objects sorted by key, one entry per line, ASCII-escaped.
 
 ## Versioning
