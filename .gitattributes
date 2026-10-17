@@ -1,0 +1,4 @@
+* text=auto eol=lf
+*.tsv -diff linguist-generated
+subsets/*.json -diff linguist-generated
+games/** linguist-generated

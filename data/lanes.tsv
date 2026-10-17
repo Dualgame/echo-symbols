@@ -1,0 +1,5 @@
+game	platform	builds_indexed	builds_listed	classes_indexed	status	note
+echo_vr	pc	1093	2200	381	indexed	all downloaded builds are indexed; the store lists more
+echo_vr	quest	399	1503	215	indexed	all downloaded builds are indexed; the store lists more
+lone_echo_1	pc	178	225	8	partial	the package index covers 8 resource classes; most names are in other.tsv
+lone_echo_2	pc	4	991	242	partial	only a few builds are indexed; membership is incomplete
