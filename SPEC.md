@@ -25,7 +25,7 @@ in `data/wwise/`; every other `hash` column is CSymbol64.
 | `name` | printable ASCII | the exact string that hashes to `hash`; may contain spaces, `"`, `:`, `~`, `.`, `/` |
 | `kind` | `asset` · `type` · `script_function` · `script_constant` · `internal_field` · `language_key` · `literal` · `other` | what the hash names |
 | `case` | `authored` · `adjudicated` · `folded` | `authored`: a game file spells it this way. `adjudicated`: game files spell it more than one way and a written rule chose one. `folded`: capitalisation unknown |
-| `tier` | `observed` · `inferred` · `legacy` | `observed`: the string appears in a game file. `inferred`: found by a search or a naming rule. `legacy`: an early entry with no recorded source |
+| `tier` | `observed` · `inferred` · `legacy` | `observed`: the string appears in a game file. `inferred`: found by a search or a naming rule. `legacy`: an entry with no recorded source (most are early entries) |
 | `verdict` | `KEEP-observed` · `KEEP-corroborated` · `KEEP-bounded` · `UNCONFIRMED` | see [Verdicts](#verdicts) |
 | `evidence` | `stream-confirmed` · `symbols-only` · `source-only` · `inferred` · empty | for observed rows, where the string was seen: a parsed resource, a symbol table or string section, or a source-like game file (descriptor, script). `inferred`: not seen. Empty for legacy rows |
 | `method` | `paired-symbol-record` · `literal` · `resource-binding` · `grammar-recovery` · empty | how the name was obtained. Empty for legacy rows |

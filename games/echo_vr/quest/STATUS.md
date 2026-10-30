@@ -6,21 +6,21 @@ Builds indexed: 399 of 1503 listed. Classes indexed: 215 (a class with an unknow
 
 | file | rows |
 |---|---:|
-| `assets.tsv` (in this game's build index) | 25530 |
+| `assets.tsv` (in this game's build index) | 25615 |
 | `other.tsv` (from this game's files, not in its build index) | 7074 |
 
-Tiers: observed 10243 · inferred 22343 · legacy 18.
+Tiers: observed 10243 · inferred 22428 · legacy 18.
 
 ## Coverage per class
 
-A hash counts once for each class it ships under. Overall 32536 / 34549 named.
+A hash counts once for each class it ships under. Overall 32621 / 34549 named.
 
 | class | hashes | named | % |
 |---|---:|---:|---:|
-| `RawTexturePackfile` | 12533 | 12180 | 97.2 |
-| `CGTextureResource` | 8646 | 8436 | 97.6 |
-| `CGMaterialResource` | 1489 | 1421 | 95.4 |
-| `CGShaderSetResource` | 1478 | 1123 | 76.0 |
+| `RawTexturePackfile` | 12533 | 12196 | 97.3 |
+| `CGTextureResource` | 8646 | 8450 | 97.7 |
+| `CGMaterialResource` | 1489 | 1428 | 95.9 |
+| `CGShaderSetResource` | 1478 | 1171 | 79.2 |
 | `CGTextureStreamingResource` | 1381 | 1150 | 83.3 |
 | `CGVisibilityResource` | 1381 | 1150 | 83.3 |
 | `CPhysicsResource` | 1078 | 953 | 88.4 |
@@ -237,7 +237,7 @@ A hash counts once for each class it ships under. Overall 32536 / 34549 named.
 
 Sound names referenced by the banks: 1293. Media: 1958 in 32 banks; 1888 labelled from a named event, 70 from an unnamed one.
 Script functions: 813 of 1003 named, in 1890 script/function pairs. Graph constants: 2096 in 4749 script/constant pairs. Script node classes: 936.
-Shader-set names split into owner, material, pass and features: 106 (`shaders/shadersets.tsv`).
+Shader-set names split into owner, material, pass and features: 154 (`shaders/shadersets.tsv`).
 
 ## Types
 

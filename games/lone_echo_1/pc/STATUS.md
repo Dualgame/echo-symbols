@@ -7,9 +7,9 @@ Builds indexed: 178 of 225 listed. Classes indexed: 8 (a class with an unknown t
 | file | rows |
 |---|---:|
 | `assets.tsv` (in this game's build index) | 5489 |
-| `other.tsv` (from this game's files, not in its build index) | 19869 |
+| `other.tsv` (from this game's files, not in its build index) | 20142 |
 
-Tiers: observed 12349 · inferred 12994 · legacy 15.
+Tiers: observed 12622 · inferred 12994 · legacy 15.
 
 ## Coverage per class
 

@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.4.0 — 2026-10-30
+
+- 32,702 more names (171,015 → 203,717); no row removed. Almost all are Lone Echo II: its named asset ids rise from
+  63,925 to 95,946, that is 65.1 % of the 147,455 ids in the 4 indexed Lone Echo II builds (`data/lanes.tsv`).
+  Echo VR asset names: PC +341, Quest +85. Names outside the build index (`other.tsv`): Echo VR PC +375, Lone Echo
+  +273, Lone Echo II +26.
+- Of the added rows, 29,708 are `KEEP-bounded` search results, 2,333 `KEEP-corroborated` and 661 `KEEP-observed`;
+  the observed share of all rows drops to 22 %. 119 existing rows were upgraded from `KEEP-bounded` to
+  `KEEP-corroborated`; no row was downgraded.
+- **Three names corrected.** Three Echo VR graph constants each had two names that hash to the same id, and 0.3
+  published the wrong one. Each correct name is the missing sibling in its canvas (PC 6323983201049540):
+  `0x6896509e625cdbbb` `talkuhbkahwg` → `group_legal_text_actions`, `0xf1d68850a07da16a` `r14flaggmq9bpx` →
+  `opt0_select`, `0xa2cd843076df37eb` `ngki8108l9s` → `tier_2_item_preview`. The rows now have `kind = other`
+  (was `script_constant`) and `p_chance` 1.1e-06; the new names also appear in the PC and Quest
+  `scripts/constants.tsv` views and in every `subsets/` file. If you copied a lookup from 0.3, replace these three rows.
+- 18 more type symbols have a class name (4 remain without one). `data/builds.tsv` cites 10 more builds.
+- No column or format changes. `SPEC.md`: the `legacy` tier is defined as any entry with no recorded source.
+
 ## 0.3.0 — 2026-10-17
 
 - Echo VR Quest scripts: 1,003 script function ids (813 named), 1,890 script/function pairs, 2,096 named graph

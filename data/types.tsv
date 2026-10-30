@@ -157,7 +157,7 @@ hash	class	suffix	schema	layer	game	platform	first_build	last_build	assets
 0x24cbfd54e9a7f2ea	CR15NetRewardItemCR	Android	android	primary	echo_vr	quest	3631412440231790	6848562085183460	6
 0x25015c32d092cf03	CR15StickySurfaceCR	Win7	win7	primary	echo_vr	pc	2597422157039015	3723318104449409	4
 0x2544b5fde731cacc	CR15InputPointerCR	Android	android	primary	echo_vr	quest	2697485363624507	6848562085183460	4
-0x257c07ac5de6fc33			win7	unknown	echo_vr	pc	1886914281423143	1886914281423143	1
+0x257c07ac5de6fc33	CR16StaticArtTouchInteractCR	Win7	win7	primary	echo_vr	pc	1886914281423143	1886914281423143	1
 0x257f3d97b2b3dfe2	CR15NetSocialGroupsCR	Android	android	primary	echo_vr	quest	3290880314285006	3382365578469812	2
 0x25ff8304f412834c	CR16StaticCreepSoundCR	Win10	win10	primary	lone_echo_2	pc	4271477816241467	4419812734741307	40
 0x260daa7a0b700987	CGLensFlareResource	Win7Debug	win7	debug	echo_vr	pc	1638501196264454	1638501196264454	1
@@ -193,7 +193,7 @@ hash	class	suffix	schema	layer	game	platform	first_build	last_build	assets
 0x2de74ce96e08f20b	CR15MenuPlayerCR	Win7	win7	primary	echo_vr	pc	1762881033826469	3723318104449409	3
 0x2df40dfa8099128b	CGShaderSetResource	Win7GPU	win7	gpu	echo_vr	pc	1376029195844990	3723318104449409	16319
 0x2df40dfa8099128b	CGShaderSetResource	Win7GPU	win7	gpu	lone_echo_1	pc	1368203483208041	3327398837288486	39
-0x2e7d3d886c9550be			win10	unknown	lone_echo_2	pc	4271477816241467	4419812734741307	50
+0x2e7d3d886c9550be	CR16ZeroGPropCR	Win10	win10	primary	lone_echo_2	pc	4271477816241467	4419812734741307	50
 0x2f0ce8dd7eff9dec	CR16DroneTargetFinderCR	Win10	win10	primary	lone_echo_2	pc	4271477816241467	4419812734741307	29
 0x301b54be11519ef8	CR15NetDamageableCR	Android	android	primary	echo_vr	quest	2697485363624507	6848562085183460	2
 0x3073a5a0ddb97777	CGStaticInstanceResource	AndroidGPU	android	gpu	echo_vr	quest	2697485363624507	6848562085183460	33
@@ -255,7 +255,7 @@ hash	class	suffix	schema	layer	game	platform	first_build	last_build	assets
 0x3b5db8af43546d40	CDecalCR	Win10	win10	primary	lone_echo_2	pc	4271477816241467	4419812734741307	83
 0x3b87ef2fc94a9b14	CMaterialTypeCR	Win10	win10	primary	echo_vr	pc	3251999578247933	6608609535920237	49
 0x3b87ef2fc94a9b14	CMaterialTypeCR	Win10	win10	primary	lone_echo_2	pc	4271477816241467	4419812734741307	302
-0x3b9b21b4c99155fc			win10	unknown	lone_echo_2	pc	4271477816241467	4419812734741307	16
+0x3b9b21b4c99155fc	CR16TranslateToHandTouchTypeCR	Win10	win10	primary	lone_echo_2	pc	4271477816241467	4419812734741307	16
 0x3c195d4a34bfa712	CR16HuskCR	Win10	win10	primary	lone_echo_2	pc	4271477816241467	4419812734741307	1
 0x3c84efb7ee340504	CR16PointerCursorCR	Win10	win10	primary	lone_echo_2	pc	4271477816241467	4419812734741307	2
 0x3cbbd244f3441e21	CR16ScanningToolCR	Win7	win7	primary	echo_vr	pc	1886914281423143	1886914281423143	1
@@ -269,7 +269,7 @@ hash	class	suffix	schema	layer	game	platform	first_build	last_build	assets
 0x3ef2335265daea50	CGSceneResource	Android	android	primary	echo_vr	quest	2697485363624507	6848562085183460	662
 0x3f10a5c43b908251	CR14RumbleCR	Win7	win7	primary	echo_vr	pc	1634329036681670	1779253885522517	5
 0x3f1c4c3c2a05bc10	CR15SmoothAttacherCR	Android	android	primary	echo_vr	quest	2697485363624507	6528386917200980	8
-0x3f1f067d4ed8d5e8			win10	unknown	lone_echo_2	pc	4271477816241467	4419812734741307	3
+0x3f1f067d4ed8d5e8	CR16ZeroGNavCR	Win10	win10	primary	lone_echo_2	pc	4271477816241467	4419812734741307	3
 0x3f7e8abc90dcd2fb	CR14NetExplosionCR	Win7	win7	primary	echo_vr	pc	1699959620118611	1779253885522517	6
 0x3f96729c19ddc8c8	CR15RadiationShieldsCR	Win10	win10	primary	echo_vr	pc	3251999578247933	6608609535920237	4
 0x3fb3b038b80ec582	CR16StandardPOICR	Win10	win10	primary	lone_echo_2	pc	4271477816241467	4419812734741307	83
@@ -384,7 +384,7 @@ hash	class	suffix	schema	layer	game	platform	first_build	last_build	assets
 0x5365aad78fc20d6b	CGLightMapResource	Win7GPU	win7	gpu	echo_vr	pc	1804681439646428	3723318104449409	772
 0x5373adddcaca147a	CGLightMapResource	Android	android	primary	echo_vr	quest	2697485363624507	6848562085183460	674
 0x539edfcdcd574b12	CR15NetSocialInteractCR	Android	android	primary	echo_vr	quest	2697485363624507	6848562085183460	2
-0x53a8bbd91d9c9ede			win10	unknown	lone_echo_2	pc	4271477816241467	4419812734741307	34
+0x53a8bbd91d9c9ede	CR16LinearConstraintTouchInteractCR	Win10	win10	primary	lone_echo_2	pc	4271477816241467	4419812734741307	34
 0x542c0a7b77c2b058	CR16RotationConstraintCR	Win10	win10	primary	lone_echo_2	pc	4271477816241467	4419812734741307	30
 0x54618b172647a1d4	COcclusionCullCR	Android	android	primary	echo_vr	quest	2697485363624507	6848562085183460	25
 0x547b31427e1cbd8c	CEventCR	Win10	win10	primary	echo_vr	pc	3251999578247933	6608609535920237	39
@@ -429,7 +429,7 @@ hash	class	suffix	schema	layer	game	platform	first_build	last_build	assets
 0x5f805679920e7560	CR16CreepCystCR	Win10	win10	primary	lone_echo_2	pc	4271477816241467	4419812734741307	17
 0x5fa019d27a511a3b	CGShaderSetResource	Win7	win7	primary	echo_vr	pc	1376029195844990	3723318104449409	16319
 0x5fa019d27a511a3b	CGShaderSetResource	Win7	win7	primary	lone_echo_1	pc	1368203483208041	3327398837288486	39
-0x5fa859f52284a296			win10	unknown	lone_echo_2	pc	4271477816241467	4419812734741307	2
+0x5fa859f52284a296	CR16UIPage2CR	Win10	win10	primary	lone_echo_2	pc	4271477816241467	4419812734741307	2
 0x6075579253843440	CSoundListenerCR	Win10	win10	primary	lone_echo_2	pc	4271477816241467	4419812734741307	3
 0x607d858c90268f9a	CJsonResource	Win10	win10	primary	echo_vr	pc	3251999578247933	6608609535920237	21
 0x60d00ef0c98cb721	CR15DockToViewCR	Win7	win7	primary	echo_vr	pc	2459896667458232	3723318104449409	2
@@ -451,7 +451,7 @@ hash	class	suffix	schema	layer	game	platform	first_build	last_build	assets
 0x635114b61de7e264	CR15NetMetricsCR	Win10	win10	primary	echo_vr	pc	3251999578247933	6608609535920237	4
 0x635f6220ae85fd46	CGStandaloneShaderResource	Win10	win10	primary	echo_vr	pc	3251999578247933	6608609535920237	390
 0x635f6220ae85fd46	CGStandaloneShaderResource	Win10	win10	primary	lone_echo_2	pc	4271477816241467	4419812734741307	379
-0x63b6b89185de0dec			win10	unknown	lone_echo_2	pc	4271477816241467	4419812734741307	3
+0x63b6b89185de0dec	CR16OrientWithHandAroundAxisTouchTypeCR	Win10	win10	primary	lone_echo_2	pc	4271477816241467	4419812734741307	3
 0x63d75f570b7c7b08	CR15NetSensorCR	Win10	win10	primary	echo_vr	pc	3251999578247933	6608609535920237	2
 0x640de5a22db1ba67	CR14PlatformCR	Win7	win7	primary	echo_vr	pc	1634329036681670	1779253885522517	8
 0x658c83d9da327c17	CPhysicsResource	Win7	win7	primary	echo_vr	pc	1634329036681670	3723318104449409	2928
@@ -579,7 +579,7 @@ hash	class	suffix	schema	layer	game	platform	first_build	last_build	assets
 0x82678d599e1d99f5	CR16InputPointerCR	Win7	win7	primary	echo_vr	pc	1886914281423143	1886914281423143	1
 0x831da2a3c42a7d7c	CR15NetPunchCR	Android	android	primary	echo_vr	quest	2697485363624507	6848562085183460	2
 0x83b3646533768efc	CLegacyCameraDataCR	Android	android	primary	echo_vr	quest	2697485363624507	6528386917200980	19
-0x840299ac8b6b2d48			win10	unknown	lone_echo_2	pc	4271477816241467	4419812734741307	20
+0x840299ac8b6b2d48	CR16RotateToHandAroundAxisTouchTypeCR	Win10	win10	primary	lone_echo_2	pc	4271477816241467	4419812734741307	20
 0x840b656203d4e1ed	CR15EchoPathingCR	Win7	win7	primary	echo_vr	pc	2233462803434954	3723318104449409	1
 0x848cac07097ad9e6	CRxMaterialFXResource	Android	android	primary	echo_vr	quest	2697485363624507	6848562085183460	2
 0x858055bbd5655f64	CGameLevelInfoResource	Win10	win10	primary	echo_vr	pc	3251999578247933	6608609535920237	49
@@ -624,7 +624,7 @@ hash	class	suffix	schema	layer	game	platform	first_build	last_build	assets
 0x90499702e3f63296	CR16PropInputCR	Win10	win10	primary	lone_echo_2	pc	4271477816241467	4419812734741307	10
 0x90b32210befe86fb	CR14SmoothAttacherCR	Win7	win7	primary	echo_vr	pc	1634329036681670	1779253885522517	8
 0x91109486e7e7ac19	CComponentRegionLODCR	Win7	win7	primary	echo_vr	pc	2389774347803798	3723318104449409	13
-0x911ed928cec786b2			win10	unknown	lone_echo_2	pc	4271477816241467	4419812734741307	1
+0x911ed928cec786b2	CR16StaticArtTouchInteractCR	Win10	win10	primary	lone_echo_2	pc	4271477816241467	4419812734741307	1
 0x914c1ba9afc158e6	CR16SliderCR	Win10	win10	primary	lone_echo_2	pc	4271477816241467	4419812734741307	1
 0x915fd67110d60292	CModelSwapperCR	Win10	win10	primary	echo_vr	pc	3350452778402612	6608609535920237	4
 0x918c566cb94d2b28	CIKCR	Win10	win10	primary	lone_echo_2	pc	4271477816241467	4419812734741307	3
@@ -648,8 +648,8 @@ hash	class	suffix	schema	layer	game	platform	first_build	last_build	assets
 0x967df5a2e169f9f0	CR15NetRemoteVolumeQueryCR	Win10	win10	primary	echo_vr	pc	3251999578247933	6323983201049540	6
 0x96832b652460ecde	CTextureStreamingCR	Win10	win10	primary	echo_vr	pc	3251999578247933	6608609535920237	45
 0x96832b652460ecde	CTextureStreamingCR	Win10	win10	primary	lone_echo_2	pc	4271477816241467	4419812734741307	124
-0x968863b62e7c9c06			win10	unknown	lone_echo_2	pc	4271477816241467	4419812734741307	16
-0x96928d24bd0216e4			win10	unknown	lone_echo_2	pc	4271477816241467	4419812734741307	38
+0x968863b62e7c9c06	CR16ZeroGNavDestinationCR	Win10	win10	primary	lone_echo_2	pc	4271477816241467	4419812734741307	16
+0x96928d24bd0216e4	CR16ImpulseToHandTouchTypeCR	Win10	win10	primary	lone_echo_2	pc	4271477816241467	4419812734741307	38
 0x96e6d07288017b92	CR16DialoguePOICR	Win10	win10	primary	lone_echo_2	pc	4271477816241467	4419812734741307	83
 0x972e345389b55e73	CQuantizerResource	Win7	win7	primary	echo_vr	pc	1634329036681670	3723318104449409	5
 0x975113e786b2c0a4	CR15NetAutoTargetCR	Win10	win10	primary	echo_vr	pc	3251999578247933	6323983201049540	5
@@ -739,7 +739,7 @@ hash	class	suffix	schema	layer	game	platform	first_build	last_build	assets
 0xaa17c4262bcb0535	CR15KillVolCR	Win7	win7	primary	echo_vr	pc	1762881033826469	3723318104449409	4
 0xaa27aaa62e6dc485	CR14NetHealBubbleTargetCR	Win7	win7	primary	echo_vr	pc	1699959620118611	1779253885522517	4
 0xaa87a799be120b8a	CR16PointerCR	Win10	win10	primary	lone_echo_2	pc	4271477816241467	4419812734741307	2
-0xaaa21c0d41321ce0			win10	unknown	lone_echo_2	pc	4271477816241467	4419812734741307	54
+0xaaa21c0d41321ce0	CR16FutureHubGlobalDirLightTrackerCR	Win10	win10	primary	lone_echo_2	pc	4271477816241467	4419812734741307	54
 0xab46ef4799793722	CR16BioSporeSpawnerCR	Win10	win10	primary	lone_echo_2	pc	4271477816241467	4419812734741307	18
 0xab8b45a8e487f962	CR15TextureOverrideCR	Android	android	primary	echo_vr	quest	2697485363624507	2697485363624507	1
 0xabf5316f919f55a1	CR15PlayerNavCR	Win7	win7	primary	echo_vr	pc	1762881033826469	3723318104449409	3
@@ -814,7 +814,7 @@ hash	class	suffix	schema	layer	game	platform	first_build	last_build	assets
 0xbd1868f576836696	CR15NetDamageableCR	Win10	win10	primary	echo_vr	pc	3251999578247933	6608609535920237	10
 0xbd8575cc9885e590	CR15NetAimAssistCR	Win10	win10	primary	echo_vr	pc	3251999578247933	6323983201049540	5
 0xbd9c3b7bbc5bdf4c	CBoundingSphereCR	Android	android	primary	echo_vr	quest	2697485363624507	6848562085183460	30
-0xbdb648cb070a1764			win10	unknown	lone_echo_2	pc	4271477816241467	4419812734741307	42
+0xbdb648cb070a1764	CR16ImpulseToHand2WayTouchTypeCR	Win10	win10	primary	lone_echo_2	pc	4271477816241467	4419812734741307	42
 0xbea97aba7e07d71f	CSVOVolumeCR	Win7	win7	primary	echo_vr	pc	2366715113443055	3723318104449409	3
 0xbeac1969cb7b8861	CGTextureResource	Win10GPU	win10	gpu	echo_vr	pc	3251999578247933	6608609535920237	14732
 0xbeac1969cb7b8861	CGTextureResource	Win10GPU	win10	gpu	lone_echo_2	pc	4271477816241467	4419812734741307	43180
@@ -887,7 +887,7 @@ hash	class	suffix	schema	layer	game	platform	first_build	last_build	assets
 0xcc75d0b590d21e06	CBitFieldCR	Android	android	primary	echo_vr	quest	3288565441183160	3290880314285006	2
 0xcc9d9374cb572064	CSkeletonResource	Android	android	primary	echo_vr	quest	2697485363624507	6848562085183460	159
 0xcce0471fc10d662a	CPluginCR	Android	android	primary	echo_vr	quest	2697485363624507	6848562085183460	5
-0xcce3d9f8530d512b			win7	unknown	echo_vr	pc	1886914281423143	1886914281423143	1
+0xcce3d9f8530d512b	CR16WelderToolCR	Win7	win7	primary	echo_vr	pc	1886914281423143	1886914281423143	1
 0xcd399fb5a573cb80	CDialogue2CR	Android	android	primary	echo_vr	quest	2697485363624507	6848562085183460	21
 0xcd88a086c3a29332	CTeamCR	Android	android	primary	echo_vr	quest	3077548095618230	6528386917200980	2
 0xcdc5bd9262a2344f	CAnimSetResource	Win10Debug	win10	debug	echo_vr	pc	3508776689236886	5020551764726030	54
@@ -969,7 +969,7 @@ hash	class	suffix	schema	layer	game	platform	first_build	last_build	assets
 0xe07b513e56df851c	CR16BatteryPackCR	Win10	win10	primary	lone_echo_2	pc	4271477816241467	4419812734741307	1
 0xe07f912dbfd0ecac	CTransformAutoScaleCR	Win10	win10	primary	lone_echo_2	pc	4271477816241467	4419812734741307	22
 0xe0878382b39db6fd	CR15NetRemoteVolumeQueryCR	Win7	win7	primary	echo_vr	pc	1868931926554712	3723318104449409	5
-0xe14bfe683a095562			win10	unknown	lone_echo_2	pc	4271477816241467	4419812734741307	2
+0xe14bfe683a095562	CR16UIPage2ElementCR	Win10	win10	primary	lone_echo_2	pc	4271477816241467	4419812734741307	2
 0xe155a206f14ebe5f	CR16StickyGunToolCR	Win7	win7	primary	echo_vr	pc	1886914281423143	1886914281423143	1
 0xe2588cac17c91105	CR15NetDebugInputRecorderCR	Win7	win7	primary	echo_vr	pc	1762881033826469	3723318104449409	1
 0xe2b481c9c8d8f3d7	CR14NetPlayerEquipmentCR	Win7	win7	primary	echo_vr	pc	1699959620118611	1779253885522517	4
@@ -980,12 +980,12 @@ hash	class	suffix	schema	layer	game	platform	first_build	last_build	assets
 0xe31fea000a65f196	CStaticRaycastCR	Android	android	primary	echo_vr	quest	2697485363624507	6848562085183460	33
 0xe3478176e0b181df	CGMeshListResource	AndroidGPU	android	gpu	echo_vr	quest	2697485363624507	6848562085183460	662
 0xe35afec5cc61e295	CR16PointScanCR	Win7	win7	primary	echo_vr	pc	1886914281423143	1886914281423143	4
-0xe35cc445e9bdcd96			win10	unknown	lone_echo_2	pc	4271477816241467	4419812734741307	30
+0xe35cc445e9bdcd96	CR16ImpulseToHand2Way2HandTouchTypeCR	Win10	win10	primary	lone_echo_2	pc	4271477816241467	4419812734741307	30
 0xe35d5adcd0b04a02	CR15OrientationConstraintCR	Android	android	primary	echo_vr	quest	2697485363624507	6848562085183460	17
 0xe3724947cf594656	CR15NetRewardItemSorterCR	Android	android	primary	echo_vr	quest	3732316166808083	6528386917200980	1
 0xe3e0266f1911dafa	CGMaterialResource	Win10	win10	primary	echo_vr	pc	3251999578247933	6608609535920237	2055
 0xe3e0266f1911dafa	CGMaterialResource	Win10	win10	primary	lone_echo_2	pc	4271477816241467	4419812734741307	10827
-0xe449541f56feadaa			win10	unknown	lone_echo_2	pc	4271477816241467	4419812734741307	49
+0xe449541f56feadaa	CR16PowerFieldSensor2CR	Win10	win10	primary	lone_echo_2	pc	4271477816241467	4419812734741307	49
 0xe490925bb329a9f7	CR14ToolAbilityManagerCR	Win7	win7	primary	echo_vr	pc	1634329036681670	1779253885522517	5
 0xe4a9b494ce3ba6e0	CR15PointerInterfaceCR	Win10	win10	primary	echo_vr	pc	3514996248614930	6608609535920237	10
 0xe4f463bf9f183ff4	CR15PointerMeshCR	Android	android	primary	echo_vr	quest	3600294780010223	6848562085183460	5
@@ -1022,7 +1022,7 @@ hash	class	suffix	schema	layer	game	platform	first_build	last_build	assets
 0xea21f000ad040619	CR15RagdollCR	Win7	win7	primary	echo_vr	pc	1762881033826469	2368173013297265	1
 0xea51a0d76eb90142	CModelCR	Win10	win10	primary	echo_vr	pc	3251999578247933	6608609535920237	45
 0xea51a0d76eb90142	CModelCR	Win10	win10	primary	lone_echo_2	pc	4271477816241467	4419812734741307	124
-0xeaa87cc7daf48176			win10	unknown	lone_echo_2	pc	4271477816241467	4419812734741307	63
+0xeaa87cc7daf48176	CR16DroneTarget2CR	Win10	win10	primary	lone_echo_2	pc	4271477816241467	4419812734741307	63
 0xeac9fb460629c57e	CR15PropInputCR	Win10	win10	primary	echo_vr	pc	3251999578247933	6323983201049540	2
 0xeaf89211eced2a2d	CR15NetSensorTargetCR	Win7	win7	primary	echo_vr	pc	2088642241250345	3723318104449409	10
 0xeb49c4d655598714	CR15PlayerBroadcasterCR	Android	android	primary	echo_vr	quest	2697485363624507	6848562085183460	2

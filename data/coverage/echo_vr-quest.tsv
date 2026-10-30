@@ -32,14 +32,14 @@ CGFSEffectsResource	33	32
 CGFSEffectsVolumeResource	1	1
 CGInstancedModelResource	494	413
 CGLightMapResource	674	626
-CGMaterialResource	1489	1421
+CGMaterialResource	1489	1428
 CGMeshListResource	662	614
 CGReflectionProbeResource	33	32
 CGSceneResource	662	614
-CGShaderSetResource	1478	1123
+CGShaderSetResource	1478	1171
 CGStandaloneShaderResource	103	102
 CGStaticInstanceResource	33	32
-CGTextureResource	8646	8436
+CGTextureResource	8646	8450
 CGTextureStreamingResource	1381	1150
 CGVisibilityResource	1381	1150
 CGameLevelInfoResource	33	32
@@ -212,5 +212,5 @@ CTextureStreamingCR	30	29
 CTransformCR	31	30
 CUICanvasResource	305	266
 CWWiseSoundBankResource	36	36
-RawTexturePackfile	12533	12180
+RawTexturePackfile	12533	12196
 StreamingScript	589	553

@@ -2,18 +2,18 @@
 
 Recovered names for the 64-bit name hashes (CSymbol64) used by **Lone Echo**, **Lone Echo II** and **Echo VR**
 (PC and Quest). The games refer to assets, types, script functions and internal fields by hash. This repository maps
-171,015 of those hashes back to their names, says how certain each name is, and records which game ships it.
+203,717 of those hashes back to their names, says how certain each name is, and records which game ships it.
 
 Counts per game, per verdict and per resource class: [games/STATS.md](games/STATS.md) and each
 `games/<game>/<platform>/STATUS.md`. All of these are generated from `data/`.
 
 ## Read this before you use a name
 
-- **Most spellings are inferred.** Only about a quarter of rows (`tier = observed`) were seen as a string in a game
+- **Most spellings are inferred.** Only about a fifth of rows (`tier = observed`) were seen as a string in a game
   file. The rest were found by a search or a naming rule, or are early (`legacy`) entries with no recorded source.
   If you need certainty, use only `tier = observed`.
 - **Capitalisation is mostly unknown.** The hash treats `A`–`Z` as lowercase, so it cannot tell you how a name was
-  capitalised. About three quarters of rows have `case = folded`: use those names exactly as given and do not
+  capitalised. About four fifths of rows have `case = folded`: use those names exactly as given and do not
   "fix" their capitals.
 - **Lone Echo and Lone Echo II are incomplete.** Only part of their builds or resource classes is indexed (see their
   `STATUS.md`). A missing row does not mean the asset is not in the game.

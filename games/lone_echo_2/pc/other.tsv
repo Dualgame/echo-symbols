@@ -143,6 +143,7 @@ hash	name	kind	tier	case	verdict
 0x0f6f38ea902d584b	k_vrs_mask	internal_field	observed	authored	KEEP-observed
 0x0f760c9228c80b89	textlanguage	internal_field	observed	authored	KEEP-observed
 0x0f9e2e5e2f895d29	searingVisibility	internal_field	observed	authored	KEEP-observed
+0x0fc8dcc5ae9eb68e	Shadow.Masking.EnableCascadeBackupAmt	internal_field	observed	authored	KEEP-observed
 0x0fd12de85f2d1565	CastTransparentShadows	internal_field	observed	authored	KEEP-observed
 0x1017ee3b2f686ddb	alien_airlock_ring_02_success	other	observed	authored	KEEP-observed
 0x1030cdde253878ac	light_track_Ch2_blend_target	other	observed	authored	KEEP-observed
@@ -252,6 +253,7 @@ hash	name	kind	tier	case	verdict
 0x1a6e3d19e0810688	delegate_PortFinishedScanStarted	internal_field	observed	authored	KEEP-observed
 0x1a708c522ecef6ee	TYPE_REPORT	other	observed	authored	KEEP-observed
 0x1a78c964d2a20e77	indexedtransforms	internal_field	observed	authored	KEEP-observed
+0x1a834304e20ab495	Shadow.Masking.EnableCascadeSplits	internal_field	observed	authored	KEEP-observed
 0x1abd0137fe9b7a93	headlookcategory	internal_field	observed	authored	KEEP-observed
 0x1afdf243a6678887	evt_restore_apollo	script_constant	observed	authored	KEEP-observed
 0x1b01690fa4f6af11	R16SetCreepReactToCutterNode	internal_field	observed	authored	KEEP-observed
@@ -464,6 +466,7 @@ hash	name	kind	tier	case	verdict
 0x2df63e6d13696a21	R16SubtitleSetCameraOffsetNode	internal_field	observed	authored	KEEP-observed
 0x2e03e52c3df2ea75	fx_event_impact_destroy_lrg	other	observed	authored	KEEP-observed
 0x2e03e52c3df3fd76	fx_event_impact_destroy_med	other	observed	authored	KEEP-observed
+0x2e7d3d886c9550be	CR16ZeroGPropCRWin10	type	inferred	folded	KEEP-bounded
 0x2e84e193b516697f	R16DamageableProxy	internal_field	observed	authored	KEEP-observed
 0x2eb6710caa8224b4	R16PlayerCreepContactExpression	internal_field	observed	authored	KEEP-observed
 0x2ec0560e8c3c438c	retracted	internal_field	observed	authored	KEEP-observed
@@ -509,10 +512,12 @@ hash	name	kind	tier	case	verdict
 0x2fd0809e52645899	goalpos	internal_field	observed	authored	KEEP-observed
 0x2fd09d9e5c76528e	grabbed	internal_field	observed	authored	KEEP-observed
 0x2fd18a9a5a7d598d	feeding	internal_field	observed	authored	KEEP-observed
+0x2fd18e8d5f705693	Faraday	other	observed	authored	KEEP-observed
 0x2fd18e93527b518c	falloff	other	observed	authored	KEEP-observed
 0x2fd2839e4e67528e	elapsed	internal_field	observed	authored	KEEP-observed
 0x2fd29d8d5166528e	errored	other	observed	authored	KEEP-observed
 0x2fd380904c7b598f	doorone	other	observed	authored	KEEP-observed
+0x2fd38e925f73528e	Damaged	other	observed	authored	KEEP-observed
 0x2fd39d9648714599	drivers	internal_field	observed	authored	KEEP-observed
 0x2fd4809352625286	collvel	internal_field	observed	authored	KEEP-observed
 0x2fd480935264599e	collpnt	internal_field	observed	authored	KEEP-observed
@@ -697,6 +702,7 @@ hash	name	kind	tier	case	verdict
 0x3b686b7fe043297f	R16ClearCystStateLockNode	internal_field	observed	authored	KEEP-observed
 0x3b752bf8a199c332	R16LastCuttableHitPositionExpression	internal_field	observed	authored	KEEP-observed
 0x3b7c8ffd028be342	R16RectangleConstraintExpression	internal_field	observed	authored	KEEP-observed
+0x3b9b21b4c99155fc	CR16TranslateToHandTouchTypeCRWin10	type	inferred	folded	KEEP-bounded
 0x3ba6a838861853cd	delegate_MageHandInFace	internal_field	observed	authored	KEEP-observed
 0x3bceb997d1ad18ab	R16SetPowerNode	internal_field	observed	authored	KEEP-observed
 0x3be282123aeb8b76	MoveStop	internal_field	observed	authored	KEEP-observed
@@ -747,6 +753,7 @@ hash	name	kind	tier	case	verdict
 0x3eec9a132eed8564	handgrab	internal_field	observed	authored	KEEP-observed
 0x3f12094a3cea0fe1	lasthitisdrone	internal_field	observed	authored	KEEP-observed
 0x3f12095d3eea13e1	lasthitisspore	internal_field	observed	authored	KEEP-observed
+0x3f1f067d4ed8d5e8	CR16ZeroGNavCRWin10	type	inferred	folded	KEEP-bounded
 0x3f2e5bdb96e1be79	delegate_SubtitlesEnableStateChange	internal_field	observed	authored	KEEP-observed
 0x3f4f34456f168d32	current_option_set	other	observed	authored	KEEP-observed
 0x3f69cb294349a470	tst_gpl_r14_player	other	observed	authored	KEEP-observed
@@ -816,6 +823,7 @@ hash	name	kind	tier	case	verdict
 0x4292ac363cbc1603	IncludeInSpecBake	internal_field	observed	authored	KEEP-observed
 0x429fdf7a4839655f	is_at_min_distance	other	observed	authored	KEEP-observed
 0x42a182207b041f86	CameraComponent	internal_field	observed	authored	KEEP-observed
+0x42a2771e7e9bee55	Shadow.Masking.EnableFadeDistance	internal_field	observed	authored	KEEP-observed
 0x42b6c262b7eab9f8	pivot_y_combined_blend	internal_field	observed	authored	KEEP-observed
 0x42b920a80379bb6a	delegate_ObjectCloseToField	internal_field	observed	authored	KEEP-observed
 0x42ca90e84071285e	power_target	other	observed	authored	KEEP-observed
@@ -999,6 +1007,7 @@ hash	name	kind	tier	case	verdict
 0x535d7ea2423ce70a	TimelineDurationElapsedExpression	internal_field	observed	authored	KEEP-observed
 0x538040db0a9eba47	R16EnableMovementNode	internal_field	observed	authored	KEEP-observed
 0x53a2d0d0710a1079	R16EnableDockToViewNode	internal_field	observed	authored	KEEP-observed
+0x53a8bbd91d9c9ede	CR16LinearConstraintTouchInteractCRWin10	type	inferred	folded	KEEP-bounded
 0x53ad726dd6c3c54b	CR16PausedState	internal_field	observed	authored	KEEP-observed
 0x53b95dd84edbc466	CR16StasisFieldObjectCR	internal_field	observed	authored	KEEP-observed
 0x53d8eb55f6864be6	R16TouchInteractTargetTransformExpression	internal_field	observed	authored	KEEP-observed
@@ -1101,6 +1110,7 @@ hash	name	kind	tier	case	verdict
 0x5f32d3b0adddb86a	delegate_MageHandGrabbed	internal_field	observed	authored	KEEP-observed
 0x5f39a944757aef74	event_dish_unlocked	other	observed	authored	KEEP-observed
 0x5f805679920e7560	CR16CreepCystCRWin10	type	inferred	folded	KEEP-bounded
+0x5fa859f52284a296	CR16UIPage2CRWin10	type	inferred	folded	KEEP-bounded
 0x5fcf69fceec2468a	arm_tool_cutter_enabled	other	observed	authored	KEEP-observed
 0x5fdc3243438d2bb8	R16ToolInputDownExpression	internal_field	observed	authored	KEEP-observed
 0x5fec861f8db47f87	TetherIdle	internal_field	observed	authored	KEEP-observed
@@ -1139,6 +1149,7 @@ hash	name	kind	tier	case	verdict
 0x638169a72f0d5e9b	R16PlayerUpgradeActivateAvailableNode	internal_field	observed	authored	KEEP-observed
 0x639641c0ca2cce69	R16DetachStickyNode	internal_field	observed	authored	KEEP-observed
 0x639b52a9bbce55d2	R16PlayerGunExpression	internal_field	observed	authored	KEEP-observed
+0x63b6b89185de0dec	CR16OrientWithHandAroundAxisTouchTypeCRWin10	type	inferred	folded	KEEP-bounded
 0x63c2aa253135afc0	CR16GenericCutTargetCR	internal_field	observed	authored	KEEP-observed
 0x63ff01addd96f46b	R16LoadGame2Node	internal_field	observed	authored	KEEP-observed
 0x6462df46b642016d	blend_sync_side	internal_field	observed	authored	KEEP-observed
@@ -1268,6 +1279,8 @@ hash	name	kind	tier	case	verdict
 0x6ee19c500a6bf2ee	reportdialogue4	internal_field	observed	authored	KEEP-observed
 0x6eed71603505276f	customyawextents	internal_field	observed	authored	KEEP-observed
 0x6ef7524c23608538	CR16InteractOutputCRWin10	type	inferred	folded	KEEP-bounded
+0x6ef9e781daeae578	Shadow.EnableCascadedShadowsMed	internal_field	observed	authored	KEEP-observed
+0x6ef9e781daebef6b	Shadow.EnableCascadedShadowsLow	internal_field	observed	authored	KEEP-observed
 0x6f133bcd9de3e99c	titleassetelement	internal_field	observed	authored	KEEP-observed
 0x6f247401b34c5904	shield_max_position	other	observed	authored	KEEP-observed
 0x6f24b87d0eb5a676	CR16PlayerNavCRWin10	type	inferred	folded	KEEP-bounded
@@ -1282,6 +1295,7 @@ hash	name	kind	tier	case	verdict
 0x6fb4289953eb971c	light_puck_Ch0_intensity_target	other	observed	authored	KEEP-observed
 0x6fb5ac11d892f740	lowerbodyadd2	internal_field	observed	authored	KEEP-observed
 0x6fc2df5b235af8f7	left_handle	other	observed	authored	KEEP-observed
+0x6fcb2589a51ba101	Shadow.Masking.EnableCascadeDistance	internal_field	observed	authored	KEEP-observed
 0x6ff8c0c47ffda5a2	R16DroneTargetExpression	internal_field	observed	authored	KEEP-observed
 0x70068f9df1c8dfef	R16DroneNavResetTargetNode	internal_field	observed	authored	KEEP-observed
 0x7007f0f42cc975cd	locatorname	internal_field	observed	authored	KEEP-observed
@@ -1480,6 +1494,7 @@ hash	name	kind	tier	case	verdict
 0x83cf062f53545ff8	event_enter_vol_scene_set_fade_in_fhb	internal_field	observed	authored	KEEP-observed
 0x83f08c934cc99988	volumecomponent	internal_field	observed	authored	KEEP-observed
 0x83f2d4fbbce6ef66	R16DampenerConstraint	internal_field	observed	authored	KEEP-observed
+0x840299ac8b6b2d48	CR16RotateToHandAroundAxisTouchTypeCRWin10	type	inferred	folded	KEEP-bounded
 0x84127326d6e8fe12	R16DampenerConstraintExpression	internal_field	observed	authored	KEEP-observed
 0x84166699547dc1ab	blendshapeweights	internal_field	observed	authored	KEEP-observed
 0x8423ec923714657e	evt_tut_helmet_finish	script_constant	observed	authored	KEEP-observed
@@ -1613,6 +1628,7 @@ hash	name	kind	tier	case	verdict
 0x90fdfada23e672a4	death_reason	other	observed	authored	KEEP-observed
 0x910ec4a12c035e19	R16FaceNode	internal_field	observed	authored	KEEP-observed
 0x911d5a3d281c09ed	R16EnablePOIEventNode	internal_field	observed	authored	KEEP-observed
+0x911ed928cec786b2	CR16StaticArtTouchInteractCRWin10	type	inferred	folded	KEEP-bounded
 0x913eff4c5599680a	R16UIPage2Element	internal_field	observed	authored	KEEP-observed
 0x914c1ba9afc158e6	CR16SliderCRWin10	type	inferred	folded	KEEP-bounded
 0x9150a667a8c5b27b	MNR16HackResetNavStateNode	internal_field	observed	authored	KEEP-observed
@@ -1621,6 +1637,7 @@ hash	name	kind	tier	case	verdict
 0x918c566cb94d2b28	CIKCRWin10	type	inferred	folded	KEEP-corroborated
 0x919569a311ad7821	R16Damageable	internal_field	observed	authored	KEEP-observed
 0x91a54f593924d07a	R16TimeSinceLastSaveExpression	internal_field	observed	authored	KEEP-observed
+0x91d6c62f0618e137	Shadow.Masking.EnableMaxAOVolOptions	internal_field	observed	authored	KEEP-observed
 0x91d992ff51bb5550	StopContact	internal_field	observed	authored	KEEP-observed
 0x91ea0a0a71a4327b	dashvisible	internal_field	observed	authored	KEEP-observed
 0x9234cfe5d9ad5b0e	CR16NavAbilityManagerCRWin10	type	inferred	folded	KEEP-bounded
@@ -1672,6 +1689,8 @@ hash	name	kind	tier	case	verdict
 0x964a873baaae27f7	R16ResetNavTetherDistanceNode	internal_field	observed	authored	KEEP-observed
 0x964aa8e966ed59c0	ResolveByTranslation	internal_field	observed	authored	KEEP-observed
 0x965bb8625e97be0e	R16StasisFieldObject	internal_field	observed	authored	KEEP-observed
+0x968863b62e7c9c06	CR16ZeroGNavDestinationCRWin10	type	inferred	folded	KEEP-bounded
+0x96928d24bd0216e4	CR16ImpulseToHandTouchTypeCRWin10	type	inferred	folded	KEEP-bounded
 0x96cc0b17cf267959	R16EndOfDemoBeginNode	internal_field	observed	authored	KEEP-observed
 0x96cc5117ea69759a	R16NavigationIsPositionInBlockedVoxelExpression	internal_field	observed	authored	KEEP-observed
 0x96cce634c0441e22	R16CreepWebExpression	internal_field	observed	authored	KEEP-observed
@@ -1895,6 +1914,7 @@ hash	name	kind	tier	case	verdict
 0xaa8155fb867e8703	knownstatelabelloc	internal_field	observed	authored	KEEP-observed
 0xaa83a0474ccada77	DialRotationTargetValue	other	observed	authored	KEEP-observed
 0xaa87a799be120b8a	CR16PointerCRWin10	type	inferred	folded	KEEP-bounded
+0xaaa21c0d41321ce0	CR16FutureHubGlobalDirLightTrackerCRWin10	type	inferred	folded	KEEP-bounded
 0xaab53c9920c7bc86	CR16InductionSliderInteractCR	internal_field	observed	authored	KEEP-observed
 0xaac8b9c3f487a270	R16ReactionDetectionExpression	internal_field	observed	authored	KEEP-observed
 0xaacce15e34062a89	R16UIPage2ElementSetStateNode	internal_field	observed	authored	KEEP-observed
@@ -2068,6 +2088,7 @@ hash	name	kind	tier	case	verdict
 0xbd642838509ebd90	R16CharacterStateEvaluateExpression	internal_field	observed	authored	KEEP-observed
 0xbd70fcb5103b7e52	R16ResumeOnCalibrateExpression	internal_field	observed	authored	KEEP-observed
 0xbdb0c9d36dffada3	isreacting	internal_field	observed	authored	KEEP-observed
+0xbdb648cb070a1764	CR16ImpulseToHand2WayTouchTypeCRWin10	type	inferred	folded	KEEP-bounded
 0xbdc164a767f6a55c	lowerbodyadd	internal_field	observed	authored	KEEP-observed
 0xbdf0e0284887c089	guninfacedecaytime	internal_field	observed	authored	KEEP-observed
 0xbe2edbc1794b21ff	regen_pulse	other	observed	authored	KEEP-observed
@@ -2449,6 +2470,7 @@ hash	name	kind	tier	case	verdict
 0xe0019e57aab693a2	CR16PowerPlugCR	internal_field	observed	authored	KEEP-observed
 0xe0039244e8db63a6	evt_glb_player_disable_arm_computer	script_constant	observed	authored	KEEP-observed
 0xe007dffe62b5d5f2	CGRenderPassPostFX3D	internal_field	observed	authored	KEEP-observed
+0xe00b20caea0ed5c7	LocalizedString	other	observed	authored	KEEP-observed
 0xe0206459f422dc0f	cutterinfacetime	internal_field	observed	authored	KEEP-observed
 0xe03ef159f09424ec	R16IsPlayerGrabbingActorExpression	internal_field	observed	authored	KEEP-observed
 0xe03f7f0e8e9d8b05	R16PowerOutletSetCurrentPowerNode	internal_field	observed	authored	KEEP-observed
@@ -2463,6 +2485,7 @@ hash	name	kind	tier	case	verdict
 0xe1175f1f81381cce	powerthreshold	internal_field	observed	authored	KEEP-observed
 0xe12e02003552429c	relaycomponent	internal_field	observed	authored	KEEP-observed
 0xe1489fe26123d113	R16SphericalDamageNode	internal_field	observed	authored	KEEP-observed
+0xe14bfe683a095562	CR16UIPage2ElementCRWin10	type	inferred	folded	KEEP-bounded
 0xe150b5900c4560f0	evt_int_door_two_button	script_constant	observed	authored	KEEP-observed
 0xe15b4120ec4ac342	CR16FaradayTargetCR	internal_field	observed	authored	KEEP-observed
 0xe171219021340a35	MNR16WaitForFaradayLevelNode	internal_field	observed	authored	KEEP-observed
@@ -2501,6 +2524,7 @@ hash	name	kind	tier	case	verdict
 0xe32dc7d9d69941a2	cover	other	observed	authored	KEEP-observed
 0xe32dc7dedc8c41bc	decel	internal_field	observed	authored	KEEP-observed
 0xe34b5699f2988416	R16CurrentRadiationShieldsExpression	internal_field	observed	authored	KEEP-observed
+0xe35cc445e9bdcd96	CR16ImpulseToHand2Way2HandTouchTypeCRWin10	type	inferred	folded	KEEP-bounded
 0xe35d113e96d94abf	R16SetHandGestureOverrideContextNode	internal_field	observed	authored	KEEP-observed
 0xe36eb7d8fbf8a3da	var_power_target	other	observed	authored	KEEP-observed
 0xe3c8d6c4bc29c8c2	magehandcooldown	internal_field	observed	authored	KEEP-observed
@@ -2510,6 +2534,7 @@ hash	name	kind	tier	case	verdict
 0xe414bdb0a0c092f0	SettingsUIPageScrollableListPageExpression	internal_field	observed	authored	KEEP-observed
 0xe41c4761fb17c325	cuttingcuttable	internal_field	observed	authored	KEEP-observed
 0xe4268fcf06691f80	light_puck_Ch2_blend_current	other	observed	authored	KEEP-observed
+0xe449541f56feadaa	CR16PowerFieldSensor2CRWin10	type	inferred	folded	KEEP-bounded
 0xe473b9d95384063b	R16EndCustomSequenceNode	internal_field	observed	authored	KEEP-observed
 0xe4ba476f5676a5ec	delegate_FaradayProjectorOn	internal_field	observed	authored	KEEP-observed
 0xe4bfdd065e4d8924	R16GetPlayerHandGestureExpression	internal_field	observed	authored	KEEP-observed
@@ -2567,6 +2592,7 @@ hash	name	kind	tier	case	verdict
 0xea785d6b983a7098	R16TrackerTrackingExpression	internal_field	observed	authored	KEEP-observed
 0xea89388679364077	excludedactors	internal_field	observed	authored	KEEP-observed
 0xeaa109567a4738ff	UpdateBeforePhysicsSkeletons	internal_field	observed	authored	KEEP-observed
+0xeaa87cc7daf48176	CR16DroneTarget2CRWin10	type	inferred	folded	KEEP-bounded
 0xeaa897dd29d85a0f	maxbeamrange	internal_field	observed	authored	KEEP-observed
 0xeab62df7d932070b	R16FaradayProjectorFireNode	internal_field	observed	authored	KEEP-observed
 0xeabab727a209ba94	CR16CreepWebCR	internal_field	observed	authored	KEEP-observed

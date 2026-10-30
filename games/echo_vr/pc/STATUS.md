@@ -6,81 +6,81 @@ Builds indexed: 1093 of 2200 listed. Classes indexed: 381 (a class with an unkno
 
 | file | rows |
 |---|---:|
-| `assets.tsv` (in this game's build index) | 54772 |
-| `other.tsv` (from this game's files, not in its build index) | 20573 |
+| `assets.tsv` (in this game's build index) | 55113 |
+| `other.tsv` (from this game's files, not in its build index) | 20948 |
 
-Tiers: observed 24037 · inferred 51160 · legacy 148.
+Tiers: observed 24415 · inferred 51498 · legacy 148.
 
 ## Coverage per class
 
-A hash counts once for each class it ships under. Overall 73946 / 120407 named.
+A hash counts once for each class it ships under. Overall 74492 / 120407 named.
 
 | class | hashes | named | % |
 |---|---:|---:|---:|
-| `RawTexturePackfile` | 38087 | 24545 | 64.4 |
-| `CGTextureResource` | 24115 | 17501 | 72.6 |
-| `CGShaderSetResource` | 17028 | 4651 | 27.3 |
-| `CGTextureStreamingResource` | 6806 | 3350 | 49.2 |
-| `CGVisibilityResource` | 6806 | 3350 | 49.2 |
-| `CPhysicsResource` | 3607 | 2810 | 77.9 |
-| `CGMaterialResource` | 3481 | 2606 | 74.9 |
-| `CGInstancedModelResource` | 3358 | 2088 | 62.2 |
-| `DataHash` | 2163 | 1524 | 70.5 |
-| `CGLightMapResource` | 1440 | 1151 | 79.9 |
-| `CGMeshListResource` | 1428 | 1139 | 79.8 |
-| `CGSceneResource` | 1428 | 1139 | 79.8 |
+| `RawTexturePackfile` | 38087 | 24684 | 64.8 |
+| `CGTextureResource` | 24115 | 17561 | 72.8 |
+| `CGShaderSetResource` | 17028 | 4719 | 27.7 |
+| `CGTextureStreamingResource` | 6806 | 3367 | 49.5 |
+| `CGVisibilityResource` | 6806 | 3367 | 49.5 |
+| `CPhysicsResource` | 3607 | 2849 | 79.0 |
+| `CGMaterialResource` | 3481 | 2627 | 75.5 |
+| `CGInstancedModelResource` | 3358 | 2095 | 62.4 |
+| `DataHash` | 2163 | 1537 | 71.1 |
+| `CGLightMapResource` | 1440 | 1159 | 80.5 |
+| `CGMeshListResource` | 1428 | 1147 | 80.3 |
+| `CGSceneResource` | 1428 | 1147 | 80.3 |
 | `StreamingScript` | 932 | 704 | 75.5 |
 | `CScriptResource` | 915 | 701 | 76.6 |
-| `CArchiveResource` | 772 | 761 | 98.6 |
-| `CGStaticInstanceResource` | 721 | 469 | 65.0 |
-| `CGStandaloneShaderResource` | 504 | 489 | 97.0 |
-| `CUICanvasResource` | 446 | 353 | 79.1 |
-| `CSkeletonResource` | 430 | 317 | 73.7 |
+| `CArchiveResource` | 772 | 766 | 99.2 |
+| `CGStaticInstanceResource` | 721 | 477 | 66.2 |
+| `CGStandaloneShaderResource` | 504 | 491 | 97.4 |
+| `CUICanvasResource` | 446 | 354 | 79.4 |
+| `CSkeletonResource` | 430 | 318 | 74.0 |
 | `CGParticleEffectResource` | 263 | 92 | 35.0 |
-| `CActorDataResource` | 131 | 72 | 55.0 |
-| `CComponentSpaceResource` | 131 | 72 | 55.0 |
+| `CActorDataResource` | 131 | 77 | 58.8 |
+| `CComponentSpaceResource` | 131 | 77 | 58.8 |
 | `CAnimSetResource` | 128 | 70 | 54.7 |
-| `CScriptCR` | 125 | 71 | 56.8 |
+| `CScriptCR` | 125 | 76 | 60.8 |
 | `CGDynamicInstanceResource` | 124 | 25 | 20.2 |
-| `CTransformCR` | 124 | 70 | 56.5 |
-| `CModelCR` | 112 | 67 | 59.8 |
-| `CCanvasUICR` | 95 | 59 | 62.1 |
-| `CSoundCR` | 95 | 53 | 55.8 |
-| `CAnimationCR` | 90 | 53 | 58.9 |
-| `CPhysicsCR` | 90 | 53 | 58.9 |
-| `CGFSEffectsResource` | 81 | 72 | 88.9 |
-| `CGReflectionProbeResource` | 81 | 72 | 88.9 |
-| `CGameLevelResource` | 81 | 72 | 88.9 |
-| `CBVHResource` | 80 | 71 | 88.8 |
-| `CBoundingSphereCR` | 80 | 66 | 82.5 |
-| `CMaterialTypeCR` | 80 | 71 | 88.8 |
-| `CMaterialTypesBVHResource` | 80 | 71 | 88.8 |
-| `CStaticRaycastCR` | 80 | 71 | 88.8 |
-| `CFrustumCullCR` | 73 | 59 | 80.8 |
-| `COcclusionCullCR` | 73 | 59 | 80.8 |
+| `CTransformCR` | 124 | 75 | 60.5 |
+| `CModelCR` | 112 | 72 | 64.3 |
+| `CCanvasUICR` | 95 | 64 | 67.4 |
+| `CSoundCR` | 95 | 58 | 61.1 |
+| `CAnimationCR` | 90 | 58 | 64.4 |
+| `CPhysicsCR` | 90 | 57 | 63.3 |
+| `CGFSEffectsResource` | 81 | 77 | 95.1 |
+| `CGReflectionProbeResource` | 81 | 77 | 95.1 |
+| `CGameLevelResource` | 81 | 77 | 95.1 |
+| `CBVHResource` | 80 | 76 | 95.0 |
+| `CBoundingSphereCR` | 80 | 70 | 87.5 |
+| `CMaterialTypeCR` | 80 | 76 | 95.0 |
+| `CMaterialTypesBVHResource` | 80 | 76 | 95.0 |
+| `CStaticRaycastCR` | 80 | 76 | 95.0 |
+| `CFrustumCullCR` | 73 | 63 | 86.3 |
+| `COcclusionCullCR` | 73 | 63 | 86.3 |
 | `CWWiseSoundBankResource` | 71 | 58 | 81.7 |
 | `COccluderMeshResource` | 69 | 68 | 98.6 |
 | `CEventCR` | 65 | 49 | 75.4 |
 | `CTextureStreamingCR` | 63 | 62 | 98.4 |
 | `CBillboardCR` | 61 | 42 | 68.9 |
-| `CComponentLODCR` | 61 | 41 | 67.2 |
+| `CComponentLODCR` | 61 | 45 | 73.8 |
 | `CR15PointScanResource` | 58 | 30 | 51.7 |
 | `CR14PointScanResource` | 56 | 30 | 53.6 |
 | `CGameLevelInfoResource` | 54 | 53 | 98.1 |
 | `CGMaterialFXResource` | 53 | 30 | 56.6 |
-| `CDialogue2CR` | 50 | 31 | 62.0 |
+| `CDialogue2CR` | 50 | 32 | 64.0 |
 | `CInstanceModelCR` | 46 | 39 | 84.8 |
-| `CGParticleGraphResource` | 45 | 34 | 75.6 |
+| `CGParticleGraphResource` | 45 | 35 | 77.8 |
 | `CLegacyCameraDataCR` | 45 | 44 | 97.8 |
 | `CLevelAABBCR` | 45 | 44 | 97.8 |
 | `CR15ButtonInteractCR` | 45 | 42 | 93.3 |
 | `CR15TouchInteractCR` | 45 | 42 | 93.3 |
 | `CStaticInstanceModelCR` | 45 | 44 | 97.8 |
-| `CDecalCR` | 41 | 28 | 68.3 |
+| `CDecalCR` | 41 | 32 | 78.0 |
 | `CInputCR` | 41 | 27 | 65.9 |
 | `CR15SyncGrabCR` | 39 | 36 | 92.3 |
 | `CR15SpawnPointCR` | 36 | 33 | 91.7 |
-| `CSyncCR` | 36 | 26 | 72.2 |
+| `CSyncCR` | 36 | 27 | 75.0 |
 | `CActorLODCR` | 35 | 28 | 80.0 |
 | `CTextureOverrideCR` | 35 | 35 | 100.0 |
 | `CR15ParentedConstraintCR` | 34 | 33 | 97.1 |
@@ -90,7 +90,7 @@ A hash counts once for each class it ships under. Overall 73946 / 120407 named.
 | `CTagCR` | 30 | 21 | 70.0 |
 | `CR14TouchInteractCR` | 28 | 11 | 39.3 |
 | `CListCR` | 27 | 23 | 85.2 |
-| `CPluginCR` | 27 | 12 | 44.4 |
+| `CPluginCR` | 27 | 13 | 48.1 |
 | `CR15ImpulseToHandTouchTypeCR` | 27 | 26 | 96.3 |
 | `CR15UILayoutCR` | 26 | 26 | 100.0 |
 | `CR15UIPageCR` | 26 | 26 | 100.0 |
@@ -158,7 +158,7 @@ A hash counts once for each class it ships under. Overall 73946 / 120407 named.
 | `CR14TagCR` | 12 | 5 | 41.7 |
 | `CR15NetGunCR` | 12 | 11 | 91.7 |
 | `CR15NetSensorTargetCR` | 12 | 12 | 100.0 |
-| `CFSFXVolumeCR` | 11 | 5 | 45.5 |
+| `CFSFXVolumeCR` | 11 | 10 | 90.9 |
 | `CLODRegionCR` | 11 | 10 | 90.9 |
 | `CR15CollisionCR` | 11 | 11 | 100.0 |
 | `CR15NetDebugDrawCR` | 11 | 11 | 100.0 |
@@ -175,7 +175,7 @@ A hash counts once for each class it ships under. Overall 73946 / 120407 named.
 | `CR15TouchAnimBlendersCR` | 10 | 10 | 100.0 |
 | `CActorAliasCR` | 9 | 8 | 88.9 |
 | `COccluderMeshCR` | 9 | 9 | 100.0 |
-| `CParticleCR` | 9 | 3 | 33.3 |
+| `CParticleCR` | 9 | 4 | 44.4 |
 | `CR14NetPunchableCR` | 9 | 2 | 22.2 |
 | `CR15NetBitFieldCR` | 9 | 9 | 100.0 |
 | `CBlackboardCR` | 8 | 8 | 100.0 |
@@ -247,9 +247,9 @@ A hash counts once for each class it ships under. Overall 73946 / 120407 named.
 | `CR15StaticArtTouchInteractCR` | 5 | 5 | 100.0 |
 | `CR15UISettingsCR` | 5 | 5 | 100.0 |
 | `CSVOPathPlannerCR` | 5 | 4 | 80.0 |
-| `0x889fb19a265687c3` | 4 | 0 | 0.0 |
-| `0xbf579d3f53e2fec7` | 4 | 0 | 0.0 |
-| `0xe35afec5cc61e295` | 4 | 0 | 0.0 |
+| `0x889fb19a265687c3` | 4 | 4 | 100.0 |
+| `0xbf579d3f53e2fec7` | 4 | 4 | 100.0 |
+| `0xe35afec5cc61e295` | 4 | 4 | 100.0 |
 | `CGFSEffectsVolumeResource` | 4 | 1 | 25.0 |
 | `CLanguageTableResource` | 4 | 3 | 75.0 |
 | `CModelSwapperCR` | 4 | 4 | 100.0 |
@@ -295,13 +295,13 @@ A hash counts once for each class it ships under. Overall 73946 / 120407 named.
 | `CR15ToolAbilityManagerCR` | 3 | 3 | 100.0 |
 | `CSVOResource` | 3 | 2 | 66.7 |
 | `CSVOVolumeCR` | 3 | 2 | 66.7 |
-| `0x06b44b3a5bc7a83b` | 2 | 0 | 0.0 |
+| `0x06b44b3a5bc7a83b` | 2 | 1 | 50.0 |
 | `0x97e08dcf6f6bed4d` | 2 | 2 | 100.0 |
 | `0xa125a689fcbd03ad` | 2 | 1 | 50.0 |
 | `0xa5443aa0b1832761` | 2 | 2 | 100.0 |
 | `CActorJugglerCR` | 2 | 2 | 100.0 |
 | `CLuaScriptResource` | 2 | 2 | 100.0 |
-| `CMissionScriptRuntimeCR` | 2 | 0 | 0.0 |
+| `CMissionScriptRuntimeCR` | 2 | 1 | 50.0 |
 | `CModelLODCR` | 2 | 2 | 100.0 |
 | `CR14CollisionCR` | 2 | 1 | 50.0 |
 | `CR14ContactTrackerCR` | 2 | 1 | 50.0 |
@@ -380,7 +380,7 @@ A hash counts once for each class it ships under. Overall 73946 / 120407 named.
 | `CGLensFlareResource` | 1 | 1 | 100.0 |
 | `CLensConfigResource` | 1 | 1 | 100.0 |
 | `CMissionScriptCheckpointsResource` | 1 | 1 | 100.0 |
-| `CMissionScriptResource` | 1 | 0 | 0.0 |
+| `CMissionScriptResource` | 1 | 1 | 100.0 |
 | `CPassthroughResource` | 1 | 0 | 0.0 |
 | `CR15CutterToolCR` | 1 | 1 | 100.0 |
 | `CR15HuskCR` | 1 | 1 | 100.0 |
@@ -403,8 +403,8 @@ A hash counts once for each class it ships under. Overall 73946 / 120407 named.
 
 Sound names referenced by the banks: 1764. Media: 2721 in 39 banks; 2651 labelled from a named event, 70 from an unnamed one.
 Script functions: 1070 of 1304 named, in 2760 script/function pairs. Graph constants: 2886 in 6593 script/constant pairs. Script node classes: 1063.
-Shader-set names split into owner, material, pass and features: 1729 (`shaders/shadersets.tsv`).
+Shader-set names split into owner, material, pass and features: 1787 (`shaders/shadersets.tsv`).
 
 ## Types
 
-Type symbols: 623 for 378 classes; 3 with an unknown class (`types.tsv`).
+Type symbols: 623 for 380 classes; 1 with an unknown class (`types.tsv`).
