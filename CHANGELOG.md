@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.5.0 — 2026-11-19
+
+- 17,458 more names (203,717 → 221,175); no row removed or renamed. 17,334 are names of older Echo VR PC builds
+  (2018–2019), each read as a literal from that build's packaging log and found under the same class in that build's
+  own package manifests (`tier = observed`, `KEEP-observed`). Most are texture mips, shader sets and textures.
+  Named asset ids: Echo VR PC 55,113 → 71,820, Quest 25,615 → 26,086, Lone Echo +31, Lone Echo II +214; Echo VR PC
+  `other.tsv` +627. The other 124 added rows are `tier = legacy`.
+- 545 existing rows were upgraded (544 `KEEP-bounded` → `KEEP-corroborated`, 1 `UNCONFIRMED` → `KEEP-bounded`),
+  since the new literals corroborate their spelling; 186 of them change `spelling_basis` and `p_chance`. No row was
+  downgraded. The observed share of all rows rises to 28 %.
+- `data/builds.tsv` cites 50 more builds. Wwise and script tables are unchanged. No column or format changes.
+
 ## 0.4.0 — 2026-10-30
 
 - 32,702 more names (171,015 → 203,717); no row removed. Almost all are Lone Echo II: its named asset ids rise from

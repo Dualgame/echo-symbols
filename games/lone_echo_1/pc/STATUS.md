@@ -6,20 +6,20 @@ Builds indexed: 178 of 225 listed. Classes indexed: 8 (a class with an unknown t
 
 | file | rows |
 |---|---:|
-| `assets.tsv` (in this game's build index) | 5489 |
+| `assets.tsv` (in this game's build index) | 5520 |
 | `other.tsv` (from this game's files, not in its build index) | 20142 |
 
-Tiers: observed 12622 · inferred 12994 · legacy 15.
+Tiers: observed 12653 · inferred 12994 · legacy 15.
 
 ## Coverage per class
 
-A hash counts once for each class it ships under. Overall 5512 / 8480 named.
+A hash counts once for each class it ships under. Overall 5543 / 8480 named.
 
 | class | hashes | named | % |
 |---|---:|---:|---:|
 | `RawTexturePackfile` | 6286 | 3788 | 60.3 |
 | `CArchiveResource` | 1383 | 1097 | 79.3 |
-| `StreamingScript` | 707 | 523 | 74.0 |
+| `StreamingScript` | 707 | 554 | 78.4 |
 | `CGShaderSetResource` | 39 | 39 | 100.0 |
 | `CGStandaloneShaderResource` | 25 | 25 | 100.0 |
 | `CGTextureResource` | 22 | 22 | 100.0 |

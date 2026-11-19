@@ -6,31 +6,31 @@ Builds indexed: 4 of 991 listed. Classes indexed: 242 (a class with an unknown t
 
 | file | rows |
 |---|---:|
-| `assets.tsv` (in this game's build index) | 95946 |
+| `assets.tsv` (in this game's build index) | 96160 |
 | `other.tsv` (from this game's files, not in its build index) | 2817 |
 
-Tiers: observed 4442 · inferred 94285 · legacy 36.
+Tiers: observed 4656 · inferred 94285 · legacy 36.
 
 ## Coverage per class
 
-A hash counts once for each class it ships under. Overall 114373 / 175870 named.
+A hash counts once for each class it ships under. Overall 114630 / 175870 named.
 
 | class | hashes | named | % |
 |---|---:|---:|---:|
-| `RawTexturePackfile` | 57312 | 39217 | 68.4 |
-| `CGTextureResource` | 43180 | 29897 | 69.2 |
+| `RawTexturePackfile` | 57312 | 39233 | 68.5 |
+| `CGTextureResource` | 43180 | 29914 | 69.3 |
 | `CGMaterialResource` | 10827 | 7454 | 68.8 |
-| `CGTextureStreamingResource` | 7960 | 4903 | 61.6 |
-| `CGVisibilityResource` | 7960 | 4903 | 61.6 |
-| `CGShaderSetResource` | 7742 | 5088 | 65.7 |
-| `CGInstancedModelResource` | 6996 | 4327 | 61.8 |
-| `CPhysicsResource` | 6562 | 3126 | 47.6 |
-| `CScriptResource` | 5223 | 1288 | 24.7 |
-| `StreamingScript` | 5223 | 1288 | 24.7 |
-| `CAnimSetResource` | 1423 | 371 | 26.1 |
-| `CGLightMapResource` | 1115 | 652 | 58.5 |
-| `CGMeshListResource` | 964 | 576 | 59.8 |
-| `CGSceneResource` | 964 | 576 | 59.8 |
+| `CGTextureStreamingResource` | 7960 | 4910 | 61.7 |
+| `CGVisibilityResource` | 7960 | 4910 | 61.7 |
+| `CGShaderSetResource` | 7742 | 5195 | 67.1 |
+| `CGInstancedModelResource` | 6996 | 4358 | 62.3 |
+| `CPhysicsResource` | 6562 | 3158 | 48.1 |
+| `CScriptResource` | 5223 | 1290 | 24.7 |
+| `StreamingScript` | 5223 | 1290 | 24.7 |
+| `CAnimSetResource` | 1423 | 374 | 26.3 |
+| `CGLightMapResource` | 1115 | 659 | 59.1 |
+| `CGMeshListResource` | 964 | 583 | 60.5 |
+| `CGSceneResource` | 964 | 583 | 60.5 |
 | `CGStandaloneShaderResource` | 379 | 376 | 99.2 |
 | `CWWiseSoundBankResource` | 362 | 351 | 97.0 |
 | `CArchiveResource` | 307 | 265 | 86.3 |
@@ -48,11 +48,11 @@ A hash counts once for each class it ships under. Overall 114373 / 175870 named.
 | `CStaticRaycastCR` | 302 | 260 | 86.1 |
 | `CScriptCR` | 282 | 245 | 86.9 |
 | `CTransformCR` | 273 | 234 | 85.7 |
-| `CGParticleEffectResource` | 263 | 24 | 9.1 |
+| `CGParticleEffectResource` | 263 | 27 | 10.3 |
 | `CLegacyCameraDataCR` | 213 | 180 | 84.5 |
 | `CUICanvasResource` | 202 | 109 | 54.0 |
 | `CLanguageTableResource` | 177 | 172 | 97.2 |
-| `CSkeletonResource` | 160 | 106 | 66.2 |
+| `CSkeletonResource` | 160 | 112 | 70.0 |
 | `CMissionScriptResource` | 152 | 144 | 94.7 |
 | `CBoundingSphereCR` | 148 | 133 | 89.9 |
 | `CShapeCR` | 146 | 139 | 95.2 |
@@ -165,7 +165,7 @@ A hash counts once for each class it ships under. Overall 114373 / 175870 named.
 | `CLensResource` | 14 | 14 | 100.0 |
 | `CInputCR` | 13 | 13 | 100.0 |
 | `0xec68a8e3e33ddd30` | 11 | 11 | 100.0 |
-| `CQuantizerResource` | 11 | 3 | 27.3 |
+| `CQuantizerResource` | 11 | 5 | 45.5 |
 | `0x90499702e3f63296` | 10 | 10 | 100.0 |
 | `CCharacterAnimationCR` | 10 | 10 | 100.0 |
 | `CZoneCR` | 10 | 10 | 100.0 |
@@ -255,7 +255,7 @@ A hash counts once for each class it ships under. Overall 114373 / 175870 named.
 | `CLensConfigResource` | 1 | 1 | 100.0 |
 | `CMissionScriptCheckpointsResource` | 1 | 1 | 100.0 |
 | `CMissionScriptRuntimeCR` | 1 | 1 | 100.0 |
-| `CRadSourceResource` | 1 | 0 | 0.0 |
+| `CRadSourceResource` | 1 | 1 | 100.0 |
 | `CRxMaterialFXCR` | 1 | 1 | 100.0 |
 | `CSharedCanvasUICR` | 1 | 0 | 0.0 |
 | `CSubtitleCR` | 1 | 1 | 100.0 |
@@ -264,7 +264,7 @@ A hash counts once for each class it ships under. Overall 114373 / 175870 named.
 
 Sound bank contents (Wwise names, media) are not indexed for this game and platform.
 Script functions and node classes are not indexed for this game and platform.
-Shader-set names split into owner, material, pass and features: 778 (`shaders/shadersets.tsv`).
+Shader-set names split into owner, material, pass and features: 880 (`shaders/shadersets.tsv`).
 
 ## Types
 

@@ -1,51 +1,51 @@
 # Statistics
 
-Generated from `data/` by `tools/build_views.py`. **203717 names.**
+Generated from `data/` by `tools/build_views.py`. **221175 names.**
 
 | game | platform | status | assets.tsv | other.tsv |
 |---|---|---|---:|---:|
-| echo_vr | pc | indexed | 55113 | 20948 |
-| echo_vr | quest | indexed | 25615 | 7074 |
-| lone_echo_1 | pc | partial | 5489 | 20142 |
-| lone_echo_2 | pc | partial | 95946 | 2817 |
+| echo_vr | pc | indexed | 71820 | 21575 |
+| echo_vr | quest | indexed | 26086 | 7074 |
+| lone_echo_1 | pc | partial | 5520 | 20142 |
+| lone_echo_2 | pc | partial | 96160 | 2817 |
 
 | verdict | rows | % |
 |---|---:|---:|
-| `KEEP-bounded` | 131379 | 64.5 |
-| `KEEP-observed` | 44802 | 22.0 |
-| `KEEP-corroborated` | 27395 | 13.4 |
-| `UNCONFIRMED` | 141 | 0.1 |
+| `KEEP-bounded` | 130946 | 59.2 |
+| `KEEP-observed` | 62136 | 28.1 |
+| `KEEP-corroborated` | 27953 | 12.6 |
+| `UNCONFIRMED` | 140 | 0.1 |
 
 | tier | rows | % |
 |---|---:|---:|
-| `inferred` | 155059 | 76.1 |
-| `observed` | 44802 | 22.0 |
-| `legacy` | 3856 | 1.9 |
+| `inferred` | 155059 | 70.1 |
+| `observed` | 62136 | 28.1 |
+| `legacy` | 3980 | 1.8 |
 
 | case | rows | % |
 |---|---:|---:|
-| `folded` | 158915 | 78.0 |
-| `authored` | 44756 | 22.0 |
+| `folded` | 159039 | 71.9 |
+| `authored` | 62090 | 28.1 |
 | `adjudicated` | 46 | 0.0 |
 
 | kind | rows | % |
 |---|---:|---:|
-| `asset` | 161870 | 79.5 |
-| `other` | 15421 | 7.6 |
-| `internal_field` | 13292 | 6.5 |
-| `script_constant` | 8825 | 4.3 |
-| `type` | 3272 | 1.6 |
-| `script_function` | 960 | 0.5 |
-| `literal` | 45 | 0.0 |
+| `asset` | 178581 | 80.7 |
+| `other` | 15545 | 7.0 |
+| `internal_field` | 13292 | 6.0 |
+| `script_constant` | 8825 | 4.0 |
+| `type` | 3272 | 1.5 |
+| `script_function` | 960 | 0.4 |
+| `literal` | 668 | 0.3 |
 | `language_key` | 32 | 0.0 |
 
 | spelling basis | rows | % |
 |---|---:|---:|
-| `search` | 126657 | 62.2 |
-| `observed` | 44802 | 22.0 |
-| `corroborated` | 28402 | 13.9 |
-| `legacy-corroborated` | 3750 | 1.8 |
-| `legacy-unknown` | 106 | 0.1 |
+| `search` | 126471 | 57.2 |
+| `observed` | 62136 | 28.1 |
+| `corroborated` | 28588 | 12.9 |
+| `legacy-corroborated` | 3874 | 1.8 |
+| `legacy-unknown` | 106 | 0.0 |
 
 ## Wwise sound names
 
